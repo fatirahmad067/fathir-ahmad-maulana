@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fathir Ahmad Maulana | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark">
+
+<!-- SCROLL PROGRESS BAR -->
+<div id="scroll-progress"></div>
+
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div class="glow-bg" style="top:0;left:0;background:rgba(0,86,179,0.18);"></div>
+<div class="glow-bg" style="bottom:0;right:0;background:rgba(241,196,15,0.12);animation-delay:-6s;"></div>
+<div class="grid-pattern"></div>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="#home" class="logo-glitch">FAM.</a>
+    <div class="desktop-nav">
+      <a href="#home"         class="nav-link" id="nav-home">Home</a>
+      <a href="#profile"      class="nav-link" id="nav-profile">Profile</a>
+      <a href="#organization" class="nav-link" id="nav-org">Organization</a>
+      <a href="#internship"   class="nav-link" id="nav-intern">Internship</a>
+      <a href="#certificate"  class="nav-link" id="nav-cert">Certificate</a>
+      <a href="#profile"      class="nav-link nav-contact" id="nav-contact">Contact</a>
+    </div>
+    <div class="nav-controls">
+      <div class="nav-clock" id="nav-clock"></div>
+      <button id="lang-toggle" class="ctrl-btn">EN / ID</button>
+      <button id="theme-toggle" class="ctrl-btn theme-btn"><i class="fas fa-sun"></i></button>
+      <button id="hamburger" class="hamburger-btn"><i class="fas fa-bars"></i></button>
+    </div>
+  </div>
+  <div id="mobile-menu">
+    <a href="#home"         class="mobile-nav-link" id="mnav-home">Home</a>
+    <a href="#profile"      class="mobile-nav-link" id="mnav-profile">Profile</a>
+    <a href="#organization" class="mobile-nav-link" id="mnav-org">Organization</a>
+    <a href="#internship"   class="mobile-nav-link" id="mnav-intern">Internship</a>
+    <a href="#certificate"  class="mobile-nav-link" id="mnav-cert">Certificate</a>
+    <a href="#profile"      class="mobile-nav-link" id="mnav-contact">Contact</a>
+  </div>
+</nav>
+
+<main class="main-content">
+
+  <!-- HERO -->
+  <section id="home" class="reveal-item hero-section">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="hero-tag" id="hero-tag">&lt; Automotive Engineer &gt;</p>
+        <h1 class="hero-name">Fathir Ahmad Maulana</h1>
+        <p class="hero-quote" id="hero-quote">"Jadilah Lebih Dari Sekedar Impian, Wujudkan Dengan Tindakan"</p>
+        <div class="hero-btns">
+          <a href="#profile" class="btn-primary" id="btn-profile">Tentang Saya</a>
+          <a href="#contact" class="btn-outline"  id="btn-contact-hero">Hubungi Saya</a>
+        </div>
+      </div>
+      <div class="hero-img-wrap">
+        <div class="image-container">
+          <div class="profile-img-wrapper">
+            <div class="profile-slideshow" id="profile-slideshow">
+              <div class="slide active"><img src="img/Fathir AM.jpg"            alt="Fathir Ahmad Maulana"></div>
+              <div class="slide">      <img src="img/Fathir Ketua.jpg"         alt="Fathir - Ketua Umum"></div>
+              <div class="slide">      <img src="img/Fathir Dokumentasi.jpg"  alt="Fathir - Dokumentasi"></div>
+            </div>
+            <div class="slide-dots" id="slide-dots">
+              <button class="slide-dot active" data-idx="0"></button>
+              <button class="slide-dot"        data-idx="1"></button>
+              <button class="slide-dot"        data-idx="2"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISITOR COUNTER -->
+  <div class="visitor-bar reveal-item">
+    <div class="visitor-inner">
+      <i class="fas fa-eye visitor-icon"></i>
+      <span id="visitor-label">Pengunjung hari ini</span>
+      <strong class="visitor-count" id="visitor-count">—</strong>
+      <span class="visitor-sep">|</span>
+      <span id="total-label">Total pengunjung</span>
+      <strong class="visitor-count" id="total-count">—</strong>
+    </div>
+  </div>
+
+  <!-- PROFILE -->
+  <section id="profile" class="reveal-item section-pad">
+    <div class="profile-grid">
+      <div class="glass-card card-pad card-border-blue">
+        <h2 class="section-title color-blue" data-num="01 — ABOUT" id="title-about">About Me</h2>
+        <div class="about-body" id="about-desc">
+          <p>Saya lulusan 2025 dari jurusan Teknik Kendaraan Ringan Otomotif dengan minat khusus pada mesin dan kelistrikan.</p>
+          <p>Ketertarikan saya tumbuh sejak kecil karena ayah saya seorang mekanik. Pengalaman PKL di PT. KAI mengasah kemampuan teknis dan kerja tim saya. Saya terbiasa bekerja dengan prinsip keamanan, ketelitian, dan dokumentasi.</p>
+          <p>Tujuan saya adalah menjadi Instruktur Otomotif agar bisa berbagi ilmu hingga ke jenjang supervisor.</p>
+        </div>
+        <div class="pills-row">
+          <span class="info-pill info-pill-yellow"><i class="fas fa-phone"></i> +62 821-1296-4343</span>
+          <span class="info-pill info-pill-blue"><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6b0d0a1f02190a03060a0f5b5d5c2b0c060a020745080406">[email&#160;protected]</a></span>
+          <span class="info-pill info-pill-pink"><i class="fab fa-instagram"></i> @eskopss / @fagatigir</span>
+        </div>
+        <div class="reaction-row" data-section="profile">
+          <span class="reaction-label" id="react-label-profile">Berikan reaksi:</span>
+          <button class="react-btn" data-emoji="🔥" data-section="profile"><span>🔥</span><span class="react-num">0</span></button>
+          <button class="react-btn" data-emoji="❤️" data-section="profile"><span>❤️</span><span class="react-num">0</span></button>
+          <button class="react-btn" data-emoji="👏" data-section="profile"><span>👏</span><span class="react-num">0</span></button>
+        </div>
+      </div>
+
+      <div class="glass-card card-pad card-border-yellow">
+        <h2 class="section-title color-yellow" data-num="02 — SKILLS" id="title-skills">Skills</h2>
+        <div class="skills-list">
+          <div class="skill-row"><div class="skill-label"><span id="skill-1">Photography</span><span class="skill-pct">95%</span></div><div class="skill-bar-track"><div class="skill-bar-fill skill-bar-yellow" style="width:95%"></div></div></div>
+          <div class="skill-row"><div class="skill-label"><span>Ms. Word</span><span class="skill-pct">70%</span></div><div class="skill-bar-track"><div class="skill-bar-fill skill-bar-blue" style="width:70%"></div></div></div>
+          <div class="skill-row"><div class="skill-label"><span>HTML</span><span class="skill-pct">68%</span></div><div class="skill-bar-track"><div class="skill-bar-fill skill-bar-yellow" style="width:68%"></div></div></div>
+          <div class="skill-row"><div class="skill-label"><span>CSS</span><span class="skill-pct">65%</span></div><div class="skill-bar-track"><div class="skill-bar-fill skill-bar-blue" style="width:65%"></div></div></div>
+          <div class="skill-row"><div class="skill-label"><span>JavaScript</span><span class="skill-pct">65%</span></div><div class="skill-bar-track"><div class="skill-bar-fill skill-bar-yellow" style="width:65%"></div></div></div>
+          <div class="skill-row"><div class="skill-label"><span>Ms. PPT</span><span class="skill-pct">64%</span></div><div class="skill-bar-track"><div class="skill-bar-fill skill-bar-blue" style="width:64%"></div></div></div>
+          <div class="skill-row"><div class="skill-label"><span>Ms. Excel</span><span class="skill-pct">54%</span></div><div class="skill-bar-track"><div class="skill-bar-fill skill-bar-yellow" style="width:54%"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORGANIZATION -->
+  <section id="organization" class="reveal-item section-pad">
+    <div class="section-heading">
+      <h2 class="section-title color-blue" data-num="03 — ORG" id="title-org">Organization</h2>
+    </div>
+
+    <div class="glass-card card-pad card-border-left-yellow org-main-card">
+      <div class="org-main-inner">
+        <div class="org-text">
+          <h3 class="org-title color-blue" id="org-about-title">Sadulur Sepoor Indonesia</h3>
+          <p class="org-subtitle" id="org-about-subtitle">Komunitas Pecinta Kereta Api</p>
+          <p class="org-desc" id="org-about-desc">Wadah berkumpulnya para pecinta kereta api (railfans) untuk berbagi informasi, melakukan dokumentasi, dan mempererat silaturahmi. Berawal dari hobi, saya berkontribusi dan berkembang bersama komunitas ini dari anggota biasa hingga dipercaya menjadi Ketua Umum.</p>
+        </div>
+        <div class="org-photo-cols">
+          <div class="photo-clickable"><img src="img/SS Potrait 1.jpg"    alt="Kegiatan Portrait"></div>
+          <div class="photo-clickable"><img src="img/SS Landscape 1.jpg"  alt="Kegiatan Landscape 1"></div>
+          <div class="photo-clickable"><img src="img/SS Landscape 2.JPEG" alt="Kegiatan Landscape 2"></div>
+          <div class="photo-clickable"><img src="img/SS Landscape 3.jpg"  alt="Kegiatan Landscape 3"></div>
+          <div class="photo-clickable"><img src="img/SS Landscape 4.jpg"  alt="Kegiatan Landscape 4"></div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="track-title" id="org-track-title">Riwayat Jabatan Sadulur Sepoor</h3>
+
+    <div class="reveal-stagger org-cards-grid">
+      <div class="org-card border-blue-hover">
+        <div class="photo-clickable org-card-photo"><img src="img/Fathir Anggota.jpg" alt="Anggota Komunitas"></div>
+        <div class="org-card-body">
+          <h4 class="org-card-title color-blue" id="org-1-title">Anggota</h4>
+          <span class="org-badge badge-blue">2022 – 2024</span>
+          <ul class="org-card-list" id="org-1-desc"><li>Mengikuti kegiatan komunitas.</li><li>Menambah wawasan perkeretaapian.</li></ul>
+        </div>
+      </div>
+      <div class="org-card border-yellow-hover">
+        <div class="photo-clickable org-card-photo"><img src="img/Fathir Dokumentasi.jpg" alt="Divisi Dokumentasi"></div>
+        <div class="org-card-body">
+          <h4 class="org-card-title color-yellow" id="org-2-title">Divisi Dokumentasi</h4>
+          <span class="org-badge badge-yellow">2024 – 2025</span>
+          <ul class="org-card-list" id="org-2-desc"><li>Mengabadikan momen kegiatan.</li><li>Membuat film dokumenter.</li></ul>
+        </div>
+      </div>
+      <div class="org-card border-blue-hover">
+        <div class="photo-clickable org-card-photo"><img src="img/Fathir SDM.jpg" alt="Divisi SDM"></div>
+        <div class="org-card-body">
+          <h4 class="org-card-title color-blue" id="org-3-title">Divisi SDM</h4>
+          <span class="org-badge badge-blue">2025</span>
+          <ul class="org-card-list" id="org-3-desc"><li>Mengelola data anggota.</li><li>Rekrutmen &amp; seleksi anggota baru.</li></ul>
+        </div>
+      </div>
+      <div class="org-card border-yellow-hover">
+        <div class="photo-clickable org-card-photo"><img src="img/Fathir Ketua.jpg" alt="Ketua Umum"></div>
+        <div class="org-card-body">
+          <h4 class="org-card-title color-yellow" id="org-4-title">Ketua Umum</h4>
+          <span class="org-badge badge-yellow">2025 – <span id="org-now">sekarang</span></span>
+          <ul class="org-card-list" id="org-4-desc"><li>Memimpin seluruh kegiatan operasional.</li><li>Mengintegrasikan sistem teknologi website.</li></ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- UKM -->
+    <div class="ukm-section">
+      <h3 class="ukm-title" id="ukm-title">Unit Kegiatan Mahasiswa (UKM)</h3>
+      <div class="ukm-list">
+        <div class="glass-card card-pad ukm-card ukm-card-green">
+          <div class="ukm-header">
+            <div class="photo-clickable ukm-logo ukm-logo-green"><img src="img/Logo Nusapala.jpg" alt="Logo Nusapala"></div>
+            <div class="ukm-info">
+              <h4 class="ukm-name color-green" id="ukm-1-title">NUSAPALA</h4>
+              <p class="ukm-sub" id="ukm-1-sub">Mahasiswa Pecinta Alam</p>
+              <p class="ukm-desc" id="ukm-1-desc">Aktif dalam kegiatan pendakian gunung, eksplorasi alam, serta melatih daya juang (grit) dan ketahanan fisik maupun mental di alam bebas.</p>
+            </div>
+          </div>
+          <div class="photo-natural-grid">
+            <div class="photo-clickable"><img src="img/Nusapala 1.jpeg" alt="Foto Nusapala 1"></div>
+            <div class="photo-clickable"><img src="img/Nusapala 2.jpeg" alt="Foto Nusapala 2"></div>
+            <div class="photo-clickable"><img src="img/Nusapala 3.jpeg" alt="Foto Nusapala 3"></div>
+            <div class="photo-clickable"><img src="img/Nusapala 4.jpeg" alt="Foto Nusapala 4"></div>
+            <div class="photo-clickable"><img src="img/Nusapala 5.jpeg" alt="Foto Nusapala 5"></div>
+          </div>
+        </div>
+        <div class="glass-card card-pad ukm-card ukm-card-orange">
+          <div class="ukm-header">
+            <div class="photo-clickable ukm-logo ukm-logo-orange"><img src="img/Logo Sinatera.jpeg" alt="Logo SINATERA"></div>
+            <div class="ukm-info">
+              <h4 class="ukm-name color-orange" id="ukm-2-title">SINATERA</h4>
+              <p class="ukm-sub" id="ukm-2-sub">Divisi Musik &amp; Seni</p>
+              <p class="ukm-desc" id="ukm-2-desc">Menyalurkan kreativitas seni melalui divisi musik. Terlibat dalam berbagai pementasan dan kolaborasi karya teater serta pertunjukan kampus.</p>
+            </div>
+          </div>
+          <div class="photo-natural-grid">
+            <div class="photo-clickable"><img src="img/Sinatera 1.jpeg" alt="Foto Sinatera 1"></div>
+            <div class="photo-clickable"><img src="img/Sinatera 2.jpeg" alt="Foto Sinatera 2"></div>
+            <div class="photo-clickable"><img src="img/Sinatera 3.jpeg" alt="Foto Sinatera 3"></div>
+            <div class="photo-clickable"><img src="img/Sinatera 4.jpeg" alt="Foto Sinatera 4"></div>
+            <div class="photo-clickable"><img src="img/Sinatera 5.jpeg" alt="Foto Sinatera 5"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reaction-row" data-section="org" style="margin-top:32px;">
+      <span class="reaction-label" id="react-label-org">Berikan reaksi:</span>
+      <button class="react-btn" data-emoji="🔥" data-section="org"><span>🔥</span><span class="react-num">0</span></button>
+      <button class="react-btn" data-emoji="❤️" data-section="org"><span>❤️</span><span class="react-num">0</span></button>
+      <button class="react-btn" data-emoji="👏" data-section="org"><span>👏</span><span class="react-num">0</span></button>
+    </div>
+  </section>
+
+  <!-- INTERNSHIP -->
+  <section id="internship" class="reveal-item section-pad">
+    <div class="glass-card card-pad intern-card">
+      <div class="intern-accent-bar"></div>
+      <div class="intern-body">
+        <h2 class="section-title color-blue" data-num="04 — INTERNSHIP" id="title-intern">Internship</h2>
+        <h3 class="intern-company">PT. Kereta Api Indonesia (Persero)</h3>
+        <p class="intern-role" id="intern-role">Asisten Rolling Stock (September - November 2023)<br>Depo Lokomotif Besar A Cipinang</p>
+        <ul class="intern-list" id="intern-desc">
+          <li><span class="arrow-blue">→</span>Membantu melakukan perbaikan dan perawatan pada seluruh bagian lokomotif.</li>
+          <li><span class="arrow-yellow">→</span>Bekerja sama dalam mengerjakan instruksi Kepala Mekanik atau Ketua Tim.</li>
+          <li><span class="arrow-blue">→</span>Menyiapkan peralatan untuk perbaikan dan perawatan yang akan digunakan.</li>
+        </ul>
+        <div class="photo-natural-grid">
+          <div class="photo-clickable"><img src="img/PKL 1.jpeg" alt="Kerja Mekanik 1"></div>
+          <div class="photo-clickable"><img src="img/PKL 2.jpeg" alt="Lokomotif"></div>
+          <div class="photo-clickable"><img src="img/PKL 5.jpeg" alt="Tim KAI"></div>
+          <div class="photo-clickable"><img src="img/PKL 4.jpeg" alt="Kerja Mekanik 2"></div>
+          <div class="photo-clickable"><img src="img/PKL 3.jpeg" alt="Kerja Mekanik 3"></div>
+        </div>
+        <div class="reaction-row" data-section="intern" style="margin-top:24px;">
+          <span class="reaction-label" id="react-label-intern">Berikan reaksi:</span>
+          <button class="react-btn" data-emoji="🔥" data-section="intern"><span>🔥</span><span class="react-num">0</span></button>
+          <button class="react-btn" data-emoji="❤️" data-section="intern"><span>❤️</span><span class="react-num">0</span></button>
+          <button class="react-btn" data-emoji="👏" data-section="intern"><span>👏</span><span class="react-num">0</span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATES -->
+  <section id="certificate" class="reveal-item section-pad">
+    <h2 class="section-title color-yellow section-title-center" data-num="05 — CERT" id="title-cert">Certificates</h2>
+    <div class="reveal-stagger cert-grid">
+      <div class="cert-card cert-blue"><div class="cert-img-wrap"><img src="img/Sertifikat Front-End.png" alt="Sertifikat Front-End"></div><div class="cert-info"><h4 class="cert-name color-blue" id="cert-fe-title">Front-End Web Developer</h4><p class="cert-desc" id="cert-fe-desc">The Front-End Web Developer Bootcamp: HTML, CSS, JS &amp; React oleh Meta Brains (Udemy).</p></div></div>
+      <div class="cert-card cert-yellow"><div class="cert-img-wrap"><img src="img/Sertifikat CyberAcademy.jpg" alt="Sertifikat CyberAcademy"></div><div class="cert-info"><h4 class="cert-name color-yellow" id="cert-cyber-title">Information Security</h4><p class="cert-desc" id="cert-cyber-desc">Introduction to Information Security Course dari Cyber Academy Indonesia.</p></div></div>
+      <div class="cert-card cert-blue"><div class="cert-img-wrap"><img src="img/Sertifikat Tekiro.png" alt="Sertifikat Tekiro"></div><div class="cert-info"><h4 class="cert-name color-blue" id="cert-1-title">Sertifikat TEKIRO</h4><p class="cert-desc" id="cert-1-desc">Peserta Tekiro Mechanic Competition SMK Se-Pulau Jawa di Jakarta Tahun 2025.</p></div></div>
+      <div class="cert-card cert-yellow"><div class="cert-img-wrap"><img src="img/Sertifikat Posko Lebaran 2025.png" alt="Piagam KAI"></div><div class="cert-info"><h4 class="cert-name color-yellow" id="cert-2-title">Piagam Penghargaan KAI</h4><p class="cert-desc" id="cert-2-desc">Melaksanakan kegiatan Posko Lebaran tahun 2025 di Stasiun Gambir bersama Humas PT KAI Daop 1 Jakarta.</p></div></div>
+      <div class="cert-card cert-blue"><div class="cert-img-wrap"><img src="img/Sertifikat Kompetensi.png" alt="Sertifikat Kompetensi"></div><div class="cert-info"><h4 class="cert-name color-blue" id="cert-3-title">Sertifikat Kompetensi</h4><p class="cert-desc" id="cert-3-desc">Dinyatakan kompeten untuk Bidang Keahlian Teknik Kendaraan Ringan Jenjang III KKNI.</p></div></div>
+    </div>
+  </section>
+
+  <!-- GUESTBOOK -->
+  <section id="guestbook" class="reveal-item section-pad">
+    <div class="glass-card card-pad">
+      <h2 class="section-title color-blue" data-num="06 — GUESTBOOK" id="title-guestbook">Buku Tamu</h2>
+      <p class="guestbook-sub" id="guestbook-sub">Tinggalkan pesan untuk Fathir — pesanmu akan terlihat di sini!</p>
+      <div class="guestbook-form">
+        <input  class="gb-input" id="gb-name" type="text"  placeholder="Nama kamu..." maxlength="40">
+        <textarea class="gb-input gb-textarea" id="gb-msg" placeholder="Pesan singkat..." maxlength="200" rows="3"></textarea>
+        <button class="btn-primary gb-submit" id="gb-submit"><i class="fas fa-paper-plane"></i> <span id="gb-btn-text">Kirim Pesan</span></button>
+      </div>
+      <div class="guestbook-entries" id="guestbook-entries"></div>
+    </div>
+  </section>
+
+
+
+</main>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <div id="lightbox-bg"></div>
+  <div id="lightbox-img-wrap"><img id="lightbox-img" src="" alt=""></div>
+  <button id="lightbox-close"><i class="fas fa-times"></i></button>
+</div>
+
+<!-- WA MODAL -->
+<div class="modal fade" id="waModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content modal-content-custom">
+      <div class="modal-header modal-header-custom">
+        <h5 class="modal-title modal-label">SYSTEM MESSAGE</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body modal-body-custom">
+        <div class="animated-emoji">👋</div>
+        <h3 class="modal-heading color-blue" id="modal-title">Eits, Tunggu Dulu!</h3>
+        <div class="modal-info-box">
+          <p class="modal-text" id="modal-desc">Untuk menjaga kenyamanan dan privasi, mari berkenalan via <strong>Gmail</strong> terlebih dahulu.<br><br>Berikan <strong>Nama Lengkap</strong> &amp; <strong>Tujuan</strong> kamu. Jika sudah sesuai, kita bisa langsung ngobrol santai di WhatsApp! ✨</p>
+        </div>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fatirahmad067@gmail.com&su=Halo%20Fathir!%20Mari%20Buat%20Janji&body=Halo%20Fathir,%0A%0APerkenalkan,%0ANama%20Lengkap%20:%20%0ATujuan%20:%20%0A%0ATerima%20kasih!" target="_blank" rel="noopener noreferrer" class="contact-btn contact-btn-email modal-cta-btn"><i class="fas fa-paper-plane"></i> Lanjut ke Gmail</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- SHARE BUTTON (floating) -->
+<button id="share-btn" class="fab-btn fab-share" title="Bagikan Profil">
+  <i class="fas fa-share-alt"></i>
+</button>
+
+<!-- AI CHAT FAB -->
+<button id="ai-chat-btn" class="fab-btn fab-ai" title="Tanya AI tentang Fathir">
+  <span class="fab-ai-icon">✦</span>
+</button>
+
+<!-- AI CHAT PANEL -->
+<div id="ai-chat-panel" class="ai-panel">
+  <div class="ai-panel-header">
+    <div class="ai-panel-title">
+      <span class="ai-dot"></span>
+      <span id="ai-panel-title-text">Tanya tentang Fathir</span>
+    </div>
+    <button id="ai-chat-close" class="ai-close-btn"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="ai-messages" id="ai-messages">
+    <div class="ai-msg ai-msg-bot">
+      <div class="ai-msg-bubble" id="ai-welcome-msg">Halo! 👋 Saya AI asisten Fathir. Tanya apa saja tentang profil, pengalaman, atau keahlian saya!</div>
+    </div>
+  </div>
+  <div class="ai-suggestions" id="ai-suggestions">
+    <button class="ai-suggest-btn" data-q="Apa keahlian utama Fathir?">Apa keahliannya?</button>
+    <button class="ai-suggest-btn" data-q="Ceritakan pengalaman magang Fathir">Pengalaman magang</button>
+    <button class="ai-suggest-btn" data-q="Fathir cocok untuk posisi apa?">Cocok posisi apa?</button>
+  </div>
+  <div class="ai-input-row">
+    <input class="ai-input" id="ai-input" type="text" placeholder="Ketik pertanyaan..." maxlength="200">
+    <button class="ai-send-btn" id="ai-send"><i class="fas fa-paper-plane"></i></button>
+  </div>
+</div>
+
+<!-- SHARE MODAL -->
+<div class="share-overlay" id="share-overlay">
+  <div class="share-modal">
+    <div class="share-modal-header">
+      <span id="share-title-text">Bagikan Profil</span>
+      <button class="ai-close-btn" id="share-close"><i class="fas fa-times"></i></button>
+    </div>
+    <p class="share-desc" id="share-desc-text">Salin link atau bagikan profil Fathir ke orang lain:</p>
+    <div class="share-url-row">
+      <span class="share-url-text" id="share-url-display">fathirahmad.github.io</span>
+      <button class="share-copy-btn" id="share-copy"><i class="fas fa-copy"></i> <span id="share-copy-text">Salin</span></button>
+    </div>
+    <div class="share-buttons">
+      <a class="share-wa" id="share-wa" href="#" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </a>
+      <a class="share-ig" href="https://www.instagram.com/" target="_blank" rel="noopener">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>&copy; 2026 <span class="footer-name">Fathir Ahmad Maulana</span> — Crafted with precision &amp; passion</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+<!-- original script removed -->
+</body>
+</html>
