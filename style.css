@@ -2169,3 +2169,117 @@ body.dark .wa-trap-btn-email:hover { color: var(--blue-glow); }
 body.dark .wa-trap-btn-ig { color: #f9a8d4; border-color: rgba(249,168,212,0.18); }
 .wa-trap-btn-ig:hover { box-shadow: 0 4px 16px rgba(220,39,67,0.18); color: #dc2743; }
 body.dark .wa-trap-btn-ig:hover { color: #f9a8d4; }
+
+
+/* ===== EDUCATION SECTION ===== */
+.edu-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+}
+.edu-timeline::before {
+  content: '';
+  position: absolute;
+  left: 28px;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--yellow), var(--blue), transparent);
+  opacity: 0.2;
+  border-radius: 2px;
+}
+
+.edu-card { border-radius: 18px; }
+
+.edu-card-inner {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.edu-icon-wrap {
+  width: 56px; height: 56px;
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.edu-icon-yellow {
+  background: rgba(241,196,15,0.1);
+  border: 1.5px solid rgba(241,196,15,0.3);
+  color: var(--yellow);
+}
+body.dark .edu-icon-yellow { background: rgba(251,191,36,0.1); border-color: rgba(251,191,36,0.25); color: var(--yellow-glow); }
+.edu-icon-blue {
+  background: rgba(0,86,179,0.1);
+  border: 1.5px solid rgba(0,86,179,0.25);
+  color: var(--blue);
+}
+body.dark .edu-icon-blue { background: rgba(88,166,255,0.1); border-color: rgba(88,166,255,0.2); color: var(--blue-glow); }
+
+.edu-body { flex: 1; }
+
+.edu-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+.edu-year {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  opacity: 0.5;
+  letter-spacing: 0.06em;
+}
+.edu-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-weight: 600;
+}
+.edu-badge-yellow {
+  background: rgba(241,196,15,0.1);
+  border: 1px solid rgba(241,196,15,0.3);
+  color: #a07c00;
+}
+body.dark .edu-badge-yellow { color: var(--yellow-glow); background: rgba(251,191,36,0.1); border-color: rgba(251,191,36,0.25); }
+.edu-badge-blue {
+  background: rgba(0,86,179,0.08);
+  border: 1px solid rgba(0,86,179,0.2);
+  color: var(--blue);
+}
+body.dark .edu-badge-blue { color: var(--blue-glow); background: rgba(88,166,255,0.08); border-color: rgba(88,166,255,0.2); }
+
+.edu-school {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 1.15rem;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+.edu-degree {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--yellow);
+  margin-bottom: 12px;
+  opacity: 0.85;
+}
+body.dark .edu-degree { color: var(--yellow-glow); }
+.edu-desc {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  opacity: 0.72;
+}
+
+@media (max-width: 480px) {
+  .edu-card-inner { flex-direction: column; gap: 14px; }
+  .edu-timeline::before { display: none; }
+  .edu-icon-wrap { width: 46px; height: 46px; font-size: 1.1rem; border-radius: 12px; }
+  .edu-school { font-size: 1rem; }
+}

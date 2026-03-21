@@ -95,18 +95,18 @@ let currentLang = 'id';
 const T = {
   id: {
     // Nav desktop
-    "nav-home":"Beranda","nav-profile":"Profil","nav-org":"Organisasi",
+    "nav-home":"Beranda","nav-profile":"Profil","nav-edu":"Pendidikan","nav-org":"Organisasi",
     "nav-intern":"Magang","nav-cert":"Sertifikat","nav-contact":"Kontak",
     // Nav mobile
-    "mnav-home":"Beranda","mnav-profile":"Profil","mnav-org":"Organisasi",
+    "mnav-home":"Beranda","mnav-profile":"Profil","mnav-edu":"Pendidikan","mnav-org":"Organisasi",
     "mnav-intern":"Magang","mnav-cert":"Sertifikat","mnav-contact":"Kontak",
     // Hero
-    "hero-tag":"&lt; Insinyur Otomotif &gt;",
+    "hero-tag":"&lt; Engineer & Entrepreneur &gt;",
     "hero-quote":'"Jadilah Lebih Dari Sekedar Impian, Wujudkan Dengan Tindakan"',
     "btn-profile":"Tentang Saya","btn-contact-hero":"Hubungi Saya",
     // Profile
-    "title-about":"Tentang Saya",
-    "about-desc":"<p>Saya lulusan 2025 dari jurusan Teknik Kendaraan Ringan Otomotif dengan minat khusus pada mesin dan kelistrikan.</p><p>Ketertarikan saya tumbuh sejak kecil karena ayah saya seorang mekanik. Pengalaman PKL di PT. KAI mengasah kemampuan teknis dan kerja tim saya. Saya terbiasa bekerja dengan prinsip keamanan, ketelitian, dan dokumentasi.</p><p>Tujuan saya adalah menjadi Instruktur Otomotif agar bisa berbagi ilmu hingga ke jenjang supervisor.</p>",
+    "title-about":"Tentang Saya","title-edu":"Pendidikan","edu-1-year":"September 2025 — Sekarang","edu-1-status":"Aktif","edu-1-school":"Institut Bisnis Nusantara","edu-1-degree":"S1 Manajemen Bisnis","edu-1-desc":"Menempuh pendidikan sarjana di bidang Manajemen Bisnis, mengembangkan kemampuan manajerial, kepemimpinan, dan wawasan bisnis yang relevan dengan era digital.","edu-2-year":"2022 — 2025","edu-2-status":"Lulus","edu-2-school":"SMK — YP IPPI CAKUNG","edu-2-degree":"Kompetensi Keahlian Teknik Kendaraan Ringan Otomotif","edu-2-desc":"Lulus dengan sertifikat kompetensi KKNI Level III. Aktif mengikuti kompetisi mekanik tingkat nasional dan menyelesaikan PKL di PT. Kereta Api Indonesia.",
+    "about-desc":"<p>Saya Fathir Ahmad Maulana, lulusan 2025 jurusan Teknik Kendaraan Ringan Otomotif. Kecintaan saya pada dunia otomotif bukan sekadar pilihan — melainkan warisan dari ayah saya yang seorang mekanik, yang sejak kecil mengajarkan saya bahwa tangan yang kotor adalah tanda kerja keras yang bermakna.</p><p>Pengalaman magang di PT. Kereta Api Indonesia sebagai Asisten Rolling Stock menempa saya bekerja dengan standar industri nyata — merawat lokomotif, berkoordinasi dengan tim mekanik, dan menjunjung tinggi prinsip keamanan serta ketelitian. Di luar teknik, saya aktif di komunitas Sadulur Sepoor Indonesia hingga dipercaya menjadi Ketua Umum, serta mengeksplorasi diri lewat pendakian gunung bersama NUSAPALA dan seni musik di SINATERA.</p><p>Kini saya tengah mengembangkan diri di bidang teknologi — dari fotografi hingga web development. Tujuan saya adalah menjadi Instruktur Otomotif yang tidak hanya ahli di bidangnya, tetapi juga mampu menginspirasi generasi berikutnya. Karena bagi saya, ilmu yang tidak dibagikan adalah ilmu yang belum selesai.</p>",
     "title-skills":"Keahlian","skill-1":"Fotografi",
     "react-label-profile":"Berikan reaksi:",
     "desc-contact":"Mari berdiskusi dan berkolaborasi!",
@@ -117,7 +117,7 @@ const T = {
     "org-track-title":"Riwayat Jabatan Sadulur Sepoor",
     "org-1-title":"Anggota","org-1-desc":"<li>Mengikuti kegiatan komunitas.</li><li>Menambah wawasan perkeretaapian.</li>",
     "org-2-title":"Divisi Dokumentasi","org-2-desc":"<li>Mengabadikan momen kegiatan.</li><li>Membuat film dokumenter.</li>",
-    "org-3-title":"Divisi SDM","org-3-desc":"<li>Mengelola data anggota.</li><li>Rekrutmen &amp; seleksi anggota baru.</li>",
+    "org-3-title":"Divisi MSDM","org-3-desc":"<li>Mengelola data anggota.</li><li>Rekrutmen &amp; seleksi anggota baru.</li>",
     "org-4-title":"Ketua Umum","org-4-desc":"<li>Memimpin seluruh kegiatan operasional.</li><li>Mengintegrasikan sistem teknologi website.</li>",
     "org-now":"sekarang","react-label-org":"Berikan reaksi:",
     "ukm-title":"Unit Kegiatan Mahasiswa (UKM)",
@@ -146,15 +146,15 @@ const T = {
     "modal-desc":"Untuk menjaga kenyamanan dan privasi, mari berkenalan via <strong>Gmail</strong> terlebih dahulu.<br><br>Berikan <strong>Nama Lengkap</strong> &amp; <strong>Tujuan</strong> kamu. Jika sudah sesuai, kita bisa langsung ngobrol santai di WhatsApp! ✨"
   },
   en: {
-    "nav-home":"Home","nav-profile":"Profile","nav-org":"Organization",
+    "nav-home":"Home","nav-profile":"Profile","nav-edu":"Education","nav-org":"Organization",
     "nav-intern":"Internship","nav-cert":"Certificate","nav-contact":"Contact",
-    "mnav-home":"Home","mnav-profile":"Profile","mnav-org":"Organization",
+    "mnav-home":"Home","mnav-profile":"Profile","mnav-edu":"Education","mnav-org":"Organization",
     "mnav-intern":"Internship","mnav-cert":"Certificate","mnav-contact":"Contact",
-    "hero-tag":"&lt; Automotive Engineer &gt;",
+    "hero-tag":"&lt; Engineer & Entrepreneur &gt;",
     "hero-quote":'"Be More Than Just a Dream, Make It Happen With Action"',
     "btn-profile":"About Me","btn-contact-hero":"Contact Me",
-    "title-about":"About Me",
-    "about-desc":"<p>I am a 2025 graduate of Light Vehicle Automotive Engineering with a special interest in engines and electrical systems.</p><p>My interest grew from childhood as my father is a mechanic. My internship at PT KAI sharpened my technical and teamwork skills. I am accustomed to working with principles of safety, precision, and thorough documentation.</p><p>My goal is to become an Automotive Instructor to share knowledge and advance to a supervisory level.</p>",
+    "title-about":"About Me","title-edu":"Education","edu-1-year":"September 2025 — Present","edu-1-status":"Active","edu-1-school":"Institut Bisnis Nusantara","edu-1-degree":"Bachelor of Business Management","edu-1-desc":"Pursuing an undergraduate degree in Business Management, developing managerial skills, leadership, and business knowledge relevant to the digital era.","edu-2-year":"2022 — 2025","edu-2-status":"Graduated","edu-2-school":"Vocational High School — YP IPPI CAKUNG","edu-2-degree":"TKRO Competency Expertise","edu-2-desc":"Graduated with KKNI Level III competency certificate. Actively participated in national mechanic competitions and completed an internship at PT. Kereta Api Indonesia.",
+    "about-desc":"<p>I am Fathir Ahmad Maulana, a 2025 graduate of Light Vehicle Automotive Engineering. My passion for the automotive world is not merely a choice — it is a legacy from my father, a mechanic who taught me from a young age that dirty hands are the mark of meaningful hard work.</p><p>My internship at PT. Kereta Api Indonesia as a Rolling Stock Assistant shaped me to work by real industry standards — maintaining locomotives, coordinating with the mechanic team, and upholding the principles of safety and precision. Beyond engineering, I served as Chairman of Sadulur Sepoor Indonesia, a train enthusiast community, while also exploring mountaineering with NUSAPALA and music arts with SINATERA.</p><p>I am now expanding my skills into technology — from photography to web development. My goal is to become an Automotive Instructor who is not only an expert in the field, but also someone who can inspire the next generation. For me, knowledge that is not shared is knowledge left unfinished.</p>",
     "title-skills":"Skills","skill-1":"Photography",
     "react-label-profile":"Leave a reaction:",
     "desc-contact":"Let's discuss and collaborate!",
@@ -195,9 +195,10 @@ const DATANUM = {
   id: {
     "title-about":    "01 — TENTANG",
     "title-skills":   "02 — KEAHLIAN",
-    "title-org":      "03 — ORGANISASI",
-    "title-intern":   "04 — MAGANG",
-    "title-cert":     "05 — SERTIFIKAT",
+    "title-edu":      "03 — PENDIDIKAN",
+    "title-org":      "04 — ORGANISASI",
+    "title-intern":   "05 — MAGANG",
+    "title-cert":     "06 — SERTIFIKAT",
     "title-guestbook":"06 — BUKU TAMU",
     "title-contact":  "07 — KONTAK"
   },
@@ -205,7 +206,7 @@ const DATANUM = {
     "title-about":    "01 — ABOUT",
     "title-skills":   "02 — SKILLS",
     "title-org":      "03 — ORG",
-    "title-intern":   "04 — INTERNSHIP",
+    "title-intern":   "05 — INTERNSHIP",
     "title-cert":     "05 — CERT",
     "title-guestbook":"06 — GUESTBOOK",
     "title-contact":  "07 — CONTACT"
@@ -372,31 +373,38 @@ function initReactions() {
 }
 initReactions();
 
-// ===== GUESTBOOK =====
-const GB_KEY = 'fam_guestbook';
-function loadEntries() { try { return JSON.parse(localStorage.getItem(GB_KEY)) || []; } catch { return []; } }
-function saveEntries(arr) { localStorage.setItem(GB_KEY, JSON.stringify(arr.slice(-50))); }
+// ===== GUESTBOOK — Supabase =====
+const SB_URL = 'https://uiisytrqvxzglrtjoryc.supabase.co';
+const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVpaXN5dHJxdnh6Z2xydGpvcnljIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQxMTE0MjIsImV4cCI6MjA4OTY4NzQyMn0.gYIwWO5RpJneA8fO76AtKvnaogWh8cYrSfY35-dTlkk';
+const GB_REST = SB_URL + '/rest/v1/guestbook';
+const GB_HEADERS = { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=representation' };
+
 function escapeHtml(s) {
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
-function renderEntries() {
+
+async function renderEntries() {
   const container = document.getElementById('guestbook-entries');
-  const entries   = loadEntries();
   const emptyMsg  = currentLang === 'id' ? 'Belum ada pesan. Jadilah yang pertama! 🎉' : 'No messages yet. Be the first! 🎉';
-  if (!entries.length) {
+  try {
+    const res  = await fetch(GB_REST + '?order=id.desc&limit=50', { headers: GB_HEADERS });
+    const data = await res.json();
+    if (!Array.isArray(data) || !data.length) {
+      container.innerHTML = '<p class="gb-empty">' + emptyMsg + '</p>'; return;
+    }
+    container.innerHTML = data.map(e =>
+      '<div class="gb-entry">' +
+        '<div class="gb-entry-name">' + escapeHtml(e.name) + '</div>' +
+        '<div class="gb-entry-msg">'  + escapeHtml(e.msg)  + '</div>' +
+        '<div class="gb-entry-time">' + (e.time || new Date(e.created_at).toLocaleString('id-ID')) + '</div>' +
+      '</div>'
+    ).join('');
+  } catch {
     container.innerHTML = '<p class="gb-empty">' + emptyMsg + '</p>';
-    return;
   }
-  container.innerHTML = [...entries].reverse().map(e =>
-    '<div class="gb-entry">' +
-      '<div class="gb-entry-name">' + escapeHtml(e.name) + '</div>' +
-      '<div class="gb-entry-msg">'  + escapeHtml(e.msg)  + '</div>' +
-      '<div class="gb-entry-time">' + e.time + '</div>' +
-    '</div>'
-  ).join('');
 }
 
-document.getElementById('gb-submit').addEventListener('click', () => {
+document.getElementById('gb-submit').addEventListener('click', async () => {
   const nameEl = document.getElementById('gb-name');
   const msgEl  = document.getElementById('gb-msg');
   const name   = nameEl.value.trim();
@@ -407,16 +415,76 @@ document.getElementById('gb-submit').addEventListener('click', () => {
     });
     return;
   }
-  const now  = new Date();
-  const time = now.toLocaleDateString('id-ID', { day:'numeric', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' });
-  const arr  = loadEntries();
-  arr.push({ name, msg, time });
-  saveEntries(arr);
-  nameEl.value = ''; msgEl.value = '';
-  renderEntries();
-  attachCursorHover();
+  const submitBtn = document.getElementById('gb-submit');
+  submitBtn.disabled = true;
+  const time = new Date().toLocaleDateString('id-ID', { day:'numeric', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' });
+  try {
+    await fetch(GB_REST, {
+      method: 'POST', headers: GB_HEADERS,
+      body: JSON.stringify({ name, msg, time })
+    });
+    nameEl.value = ''; msgEl.value = '';
+    await renderEntries();
+    attachCursorHover();
+  } catch(e) {
+    console.error('Guestbook error:', e);
+  }
+  submitBtn.disabled = false;
 });
 renderEntries();
+
+// ===== LOAD DYNAMIC TEXTS FROM SUPABASE =====
+// Fetches saved texts from Supabase and injects them into the translation table (T),
+// so EN/ID switching via langBtn works correctly for all content.
+(async function loadSiteTexts() {
+  try {
+    const res  = await fetch(SB_URL + '/rest/v1/site_texts?select=key,value', { headers: GB_HEADERS });
+    const rows = await res.json();
+    if (!Array.isArray(rows) || !rows.length) return;
+
+    // Build map: { 'about-1': '...', 'about-1-en': '...', ... }
+    const map = Object.fromEntries(rows.map(r => [r.key, r.value]));
+
+    // Inject into T.id
+    if (map['about-1'] || map['about-2'] || map['about-3']) {
+      T.id['about-desc'] =
+        (map['about-1'] ? '<p>' + escapeHtml(map['about-1']) + '</p>' : '') +
+        (map['about-2'] ? '<p>' + escapeHtml(map['about-2']) + '</p>' : '') +
+        (map['about-3'] ? '<p>' + escapeHtml(map['about-3']) + '</p>' : '');
+    }
+    if (map['hero-tag'])    T.id['hero-tag']    = escapeHtml(map['hero-tag']);
+    if (map['hero-quote'])  T.id['hero-quote']  = escapeHtml(map['hero-quote']);
+    if (map['intern-role']) T.id['intern-role'] = escapeHtml(map['intern-role']).replace(/\n/g,'<br>');
+    if (map['intern-desc']) {
+      const lines  = map['intern-desc'].split('\n').filter(l => l.trim());
+      const colors = ['arrow-blue','arrow-yellow','arrow-blue','arrow-yellow'];
+      T.id['intern-desc'] = lines.map((l,i) => '<li><span class="' + colors[i%2] + '">→</span>' + escapeHtml(l.trim()) + '</li>').join('');
+    }
+
+    // Inject into T.en (use -en suffix keys if exist, otherwise keep existing EN translation)
+    if (map['about-1-en'] || map['about-2-en'] || map['about-3-en']) {
+      T.en['about-desc'] =
+        (map['about-1-en'] ? '<p>' + escapeHtml(map['about-1-en']) + '</p>' : '') +
+        (map['about-2-en'] ? '<p>' + escapeHtml(map['about-2-en']) + '</p>' : '') +
+        (map['about-3-en'] ? '<p>' + escapeHtml(map['about-3-en']) + '</p>' : '');
+    }
+    if (map['hero-tag-en'])    T.en['hero-tag']    = escapeHtml(map['hero-tag-en']);
+    if (map['hero-quote-en'])  T.en['hero-quote']  = escapeHtml(map['hero-quote-en']);
+    if (map['intern-role-en']) T.en['intern-role'] = escapeHtml(map['intern-role-en']).replace(/\n/g,'<br>');
+    if (map['intern-desc-en']) {
+      const lines  = map['intern-desc-en'].split('\n').filter(l => l.trim());
+      const colors = ['arrow-blue','arrow-yellow','arrow-blue','arrow-yellow'];
+      T.en['intern-desc'] = lines.map((l,i) => '<li><span class="' + colors[i%2] + '">→</span>' + escapeHtml(l.trim()) + '</li>').join('');
+    }
+
+    // Apply current language immediately after loading
+    const t = T[currentLang];
+    for (const key in t) {
+      const el = document.getElementById(key);
+      if (el) el.innerHTML = t[key];
+    }
+  } catch(e) { console.warn('Could not load site texts:', e.message); }
+})();
 
 // ===== SCROLL PROGRESS BAR =====
 const progressBar = document.getElementById('scroll-progress');
@@ -444,7 +512,7 @@ Berikut profil Fathir:
 - Lulus 2025, jurusan Teknik Kendaraan Ringan Otomotif (SMK)
 - Keahlian: Fotografi (95%), Ms. Word (70%), HTML (68%), CSS (65%), JavaScript (65%), Ms. PPT (64%), Ms. Excel (54%)
 - Pengalaman: PKL/Magang di PT. KAI (Kereta Api Indonesia) sebagai Asisten Rolling Stock, Sep-Nov 2023, Depo Lokomotif Besar A Cipinang. Tugas: perbaikan & perawatan lokomotif, bekerja sama dengan Kepala Mekanik.
-- Organisasi: Sadulur Sepoor Indonesia (komunitas pecinta kereta api) — pernah menjadi Anggota (2022-2024), Divisi Dokumentasi (2024-2025), Divisi SDM (2025), dan kini Ketua Umum (2025-sekarang)
+- Organisasi: Sadulur Sepoor Indonesia (komunitas pecinta kereta api) — pernah menjadi Anggota (2022-2024), Divisi Dokumentasi (2024-2025), Divisi MSDM (2025-2026), dan kini Ketua Umum (2025-sekarang)
 - UKM: NUSAPALA (pendakian gunung, alam bebas) dan SINATERA (divisi musik & seni, teater)
 - Sertifikat: Front-End Web Developer (Udemy), Information Security (Cyber Academy Indonesia), Peserta TEKIRO Mechanic Competition 2025, Piagam KAI Posko Lebaran 2025, Sertifikat Kompetensi KKNI Level III
 - Tujuan karier: menjadi Instruktur Otomotif, ingin berbagi ilmu hingga level supervisor
@@ -482,6 +550,12 @@ function addAIMessage(text, role) {
   return div;
 }
 
+// ============================================================
+// GEMINI API KEY
+// ============================================================
+const GEMINI_KEY = 'AIzaSyDUCxIk2t5XV9eXIkHDQ_6vvY8d2MadsdU';
+// ============================================================
+
 async function sendAIMessage() {
   const q = aiInput.value.trim();
   if (!q) return;
@@ -491,28 +565,46 @@ async function sendAIMessage() {
   addAIMessage(q, 'user');
   aiChatHistory.push({ role: 'user', content: q });
 
-  // Typing indicator
   const typingEl = addAIMessage('', 'bot');
   typingEl.classList.add('ai-typing');
 
   try {
-    const res = await fetch('/api/chat', {
+    // Build Gemini chat history format
+    const history = aiChatHistory.slice(-8);
+    const contents = history.map(m => ({
+      role: m.role === 'assistant' ? 'model' : 'user',
+      parts: [{ text: m.content }]
+    }));
+
+    const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=' + GEMINI_KEY;
+
+    const res = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: q, history: aiChatHistory.slice(-6) })
+      body: JSON.stringify({
+        system_instruction: { parts: [{ text: FATHIR_CONTEXT }] },
+        contents: contents,
+        generationConfig: { maxOutputTokens: 300, temperature: 0.7 }
+      })
     });
+
     const data = await res.json();
-    const reply = data.reply || (currentLang === 'id'
-      ? 'Maaf, tidak bisa terhubung. Coba lagi ya!'
-      : 'Sorry, could not connect. Please try again!');
+
+    if (data.error) throw new Error(data.error.message);
+
+    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text
+      || (currentLang === 'id'
+        ? 'Maaf, tidak bisa terhubung. Coba lagi ya!'
+        : 'Sorry, could not connect. Please try again!');
 
     typingEl.classList.remove('ai-typing');
     typingEl.querySelector('.ai-msg-bubble').textContent = reply;
     aiChatHistory.push({ role: 'assistant', content: reply });
-  } catch {
+  } catch(err) {
     typingEl.classList.remove('ai-typing');
     typingEl.querySelector('.ai-msg-bubble').textContent = currentLang === 'id'
       ? 'Maaf, terjadi kesalahan. Coba lagi!' : 'Sorry, an error occurred. Try again!';
+    console.error('AI error:', err.message);
   }
   aiMessages.scrollTop = aiMessages.scrollHeight;
 }

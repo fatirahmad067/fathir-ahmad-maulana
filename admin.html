@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — FAM Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #0056b3; --blue-glow: #3b82f6;
+      --yellow: #f1c40f; --yellow-glow: #fbbf24;
+      --red: #ef4444; --green: #22c55e;
+      --bg: #060c1a;
+      --surface: rgba(255,255,255,0.04);
+      --surface-2: rgba(255,255,255,0.07);
+      --border: rgba(88,166,255,0.12);
+      --text: #e2e8f0;
+      --radius: 14px;
+    }
+    html, body { height: 100%; }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; min-height: 100vh; }
+    body::before { content: ''; position: fixed; inset: 0; z-index: 0; background-image: linear-gradient(rgba(0,86,179,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(0,86,179,0.06) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; }
+
+    /* LOGIN */
+    #login-screen { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 20px; background: var(--bg); transition: opacity 0.4s, transform 0.4s; }
+    #login-screen.hidden { opacity: 0; transform: scale(0.96); pointer-events: none; }
+    .login-box { width: min(400px, 100%); background: var(--surface); border: 1px solid var(--border); border-radius: 24px; padding: 40px 36px; box-shadow: 0 30px 80px rgba(0,0,0,0.4); position: relative; z-index: 1; }
+    .login-logo { font-family: 'JetBrains Mono', monospace; font-size: 1.8rem; font-weight: 600; color: var(--blue-glow); margin-bottom: 6px; }
+    .login-label { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--yellow); opacity: 0.7; margin-bottom: 32px; display: block; }
+    .login-field { margin-bottom: 16px; }
+    .login-field label { display: block; font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.5; margin-bottom: 8px; }
+    .login-input { width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.05); border: 1.5px solid rgba(88,166,255,0.15); border-radius: 10px; color: var(--text); font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
+    .login-input:focus { border-color: var(--blue-glow); box-shadow: 0 0 0 3px rgba(59,130,246,0.12); }
+    .login-input.error { border-color: var(--red); }
+    .login-btn { width: 100%; margin-top: 8px; padding: 13px; background: var(--blue); color: #fff; border: none; border-radius: 10px; font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: background 0.2s, transform 0.2s, box-shadow 0.2s; }
+    .login-btn:hover { background: var(--blue-glow); transform: translateY(-1px); box-shadow: 0 6px 24px rgba(59,130,246,0.4); }
+    .login-error { margin-top: 12px; padding: 10px 14px; border-radius: 8px; background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.25); color: #fca5a5; font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; display: none; }
+    .login-error.show { display: block; }
+
+    /* DASHBOARD */
+    #dashboard { display: none; min-height: 100vh; position: relative; z-index: 1; }
+    #dashboard.active { display: flex; flex-direction: column; }
+    .admin-topbar { position: sticky; top: 0; z-index: 50; background: rgba(6,12,26,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); padding: 0 28px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .topbar-left { display: flex; align-items: center; gap: 14px; }
+    .topbar-logo { font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; font-weight: 600; color: var(--blue-glow); }
+    .topbar-badge { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(241,196,15,0.12); border: 1px solid rgba(241,196,15,0.3); color: var(--yellow); padding: 3px 10px; border-radius: 100px; }
+    .topbar-right { display: flex; align-items: center; gap: 12px; }
+    .topbar-user { font-size: 0.78rem; font-family: 'JetBrains Mono', monospace; opacity: 0.45; }
+    .logout-btn { padding: 6px 14px; border: 1px solid rgba(239,68,68,0.3); background: rgba(239,68,68,0.07); color: #fca5a5; border-radius: 8px; font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; cursor: pointer; transition: background 0.2s; }
+    .logout-btn:hover { background: rgba(239,68,68,0.15); }
+    .admin-layout { display: flex; flex: 1; }
+    .admin-sidebar { width: 220px; flex-shrink: 0; border-right: 1px solid var(--border); padding: 24px 12px; display: flex; flex-direction: column; gap: 4px; position: sticky; top: 60px; height: calc(100vh - 60px); overflow-y: auto; }
+    .sidebar-label { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.3; padding: 4px 12px 8px; margin-top: 12px; }
+    .sidebar-btn { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 10px; border: none; background: none; color: var(--text); font-family: 'Outfit', sans-serif; font-size: 0.85rem; font-weight: 500; cursor: pointer; width: 100%; text-align: left; opacity: 0.6; transition: background 0.2s, opacity 0.2s; }
+    .sidebar-btn i { width: 16px; text-align: center; }
+    .sidebar-btn:hover { background: var(--surface-2); opacity: 1; }
+    .sidebar-btn.active { background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.2); color: var(--blue-glow); opacity: 1; }
+    .admin-main { flex: 1; padding: 32px; overflow-y: auto; }
+    .admin-panel { display: none; }
+    .admin-panel.active { display: block; }
+    .panel-title { font-size: 1.4rem; font-weight: 800; margin-bottom: 6px; }
+    .panel-sub { font-size: 0.82rem; font-family: 'JetBrains Mono', monospace; opacity: 0.4; margin-bottom: 28px; }
+    .acard { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 20px; }
+    .acard-title { font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.4; margin-bottom: 16px; }
+
+    /* GUESTBOOK */
+    .gb-list { display: flex; flex-direction: column; gap: 10px; }
+    .gb-entry-admin { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 14px 18px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; animation: fadeUp 0.3s ease; }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+    .gb-entry-info { flex: 1; }
+    .gb-entry-name { font-weight: 700; font-size: 0.88rem; color: var(--blue-glow); margin-bottom: 4px; }
+    .gb-entry-msg { font-size: 0.85rem; opacity: 0.8; line-height: 1.5; margin-bottom: 6px; }
+    .gb-entry-time { font-size: 0.68rem; font-family: 'JetBrains Mono', monospace; opacity: 0.35; }
+    .gb-entry-actions { display: flex; gap: 6px; flex-shrink: 0; }
+    .btn-icon { width: 32px; height: 32px; border-radius: 8px; border: 1px solid transparent; background: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.78rem; transition: background 0.2s, transform 0.15s; color: var(--text); }
+    .btn-icon:hover { transform: scale(1.08); }
+    .btn-edit { border-color: rgba(59,130,246,0.25); color: var(--blue-glow); }
+    .btn-edit:hover { background: rgba(59,130,246,0.12); }
+    .btn-del { border-color: rgba(239,68,68,0.25); color: #fca5a5; }
+    .btn-del:hover { background: rgba(239,68,68,0.15); }
+    .empty-state { text-align: center; padding: 40px 20px; opacity: 0.35; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; }
+    .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px; margin-bottom: 28px; }
+    .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; }
+    .stat-num { font-size: 1.8rem; font-weight: 800; font-family: 'JetBrains Mono', monospace; color: var(--blue-glow); line-height: 1; margin-bottom: 6px; }
+    .stat-label { font-size: 0.68rem; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.4; }
+
+    /* TEXTS */
+    .text-fields { display: flex; flex-direction: column; gap: 18px; }
+    .field-label { display: block; font-size: 0.68rem; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.45; margin-bottom: 8px; }
+    .adm-input { width: 100%; padding: 11px 16px; background: rgba(255,255,255,0.04); border: 1.5px solid rgba(88,166,255,0.12); border-radius: 10px; color: var(--text); font-family: 'Outfit', sans-serif; font-size: 0.88rem; outline: none; transition: border-color 0.2s; }
+    .adm-input:focus { border-color: var(--blue-glow); }
+    .adm-textarea { width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.04); border: 1.5px solid rgba(88,166,255,0.12); border-radius: 10px; color: var(--text); font-family: 'Outfit', sans-serif; font-size: 0.88rem; line-height: 1.6; resize: vertical; outline: none; transition: border-color 0.2s; min-height: 80px; }
+    .adm-textarea:focus { border-color: var(--blue-glow); }
+    .save-btn { padding: 11px 28px; background: var(--blue); color: #fff; border: none; border-radius: 10px; font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; margin-top: 4px; transition: background 0.2s, transform 0.2s, box-shadow 0.2s; }
+    .save-btn:hover { background: var(--blue-glow); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(59,130,246,0.35); }
+    .save-btn.ok { background: var(--green); }
+
+    /* PHOTOS */
+    .photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
+    .photo-card { border-radius: 10px; overflow: hidden; border: 1px solid var(--border); background: var(--surface-2); position: relative; aspect-ratio: 1; }
+    .photo-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity 0.2s; }
+    .photo-card:hover img { opacity: 0.5; }
+    .photo-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 6px; opacity: 0; transition: opacity 0.2s; }
+    .photo-card:hover .photo-overlay { opacity: 1; }
+    .photo-name { position: absolute; bottom: 0; left: 0; right: 0; padding: 5px 7px; background: linear-gradient(transparent, rgba(6,12,26,0.88)); font-size: 0.6rem; font-family: 'JetBrains Mono', monospace; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .upload-zone { border: 2px dashed rgba(88,166,255,0.22); border-radius: 12px; padding: 30px 20px; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; background: rgba(59,130,246,0.03); }
+    .upload-zone:hover, .upload-zone.drag { border-color: var(--blue-glow); background: rgba(59,130,246,0.07); }
+    .upload-zone i { font-size: 2rem; color: var(--blue-glow); opacity: 0.45; margin-bottom: 10px; display: block; }
+    .upload-zone p { font-size: 0.82rem; opacity: 0.4; font-family: 'JetBrains Mono', monospace; }
+    .upload-zone small { font-size: 0.68rem; opacity: 0.28; font-family: 'JetBrains Mono', monospace; }
+    #file-input { display: none; }
+
+    /* TOAST */
+    .toast { position: fixed; bottom: 28px; right: 28px; z-index: 9999; padding: 12px 20px; border-radius: 12px; font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; display: flex; align-items: center; gap: 10px; transform: translateY(80px); opacity: 0; transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s; backdrop-filter: blur(12px); max-width: 340px; pointer-events: none; }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .toast-success { background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.3); color: #86efac; }
+    .toast-error   { background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.3); color: #fca5a5; }
+    .toast-info    { background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.3); color: #93c5fd; }
+
+    /* MODALS */
+    .overlay { position: fixed; inset: 0; z-index: 9000; background: rgba(6,12,26,0.6); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; pointer-events: none; transition: opacity 0.25s; }
+    .overlay.open { opacity: 1; pointer-events: all; }
+    .modal-box { width: min(440px, 100%); background: rgba(8,14,28,0.99); border: 1px solid var(--border); border-radius: 20px; padding: 28px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); transform: scale(0.92) translateY(16px); transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1); }
+    .overlay.open .modal-box { transform: scale(1) translateY(0); }
+    .modal-head { display: flex; align-items: center; justify-content: space-between; font-weight: 700; font-size: 1rem; margin-bottom: 20px; }
+    .confirm-box { width: min(340px,100%); background: rgba(8,14,28,0.99); border: 1px solid rgba(239,68,68,0.25); border-radius: 18px; padding: 28px 24px 22px; text-align: center; transform: scale(0.92); transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); }
+    .overlay.open .confirm-box { transform: scale(1); }
+    .confirm-icon { font-size: 2.2rem; margin-bottom: 12px; }
+    .confirm-title { font-weight: 800; font-size: 1.05rem; margin-bottom: 6px; }
+    .confirm-sub { font-size: 0.82rem; opacity: 0.5; margin-bottom: 22px; line-height: 1.5; }
+    .confirm-btns { display: flex; gap: 10px; }
+    .btn-cancel { flex:1; padding: 10px; border: 1px solid var(--border); background: none; border-radius: 10px; color: var(--text); font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: background 0.2s; }
+    .btn-cancel:hover { background: var(--surface-2); }
+    .btn-danger { flex:1; padding: 10px; border: none; background: var(--red); border-radius: 10px; color: #fff; font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: background 0.2s, box-shadow 0.2s; }
+    .btn-danger:hover { background: #dc2626; box-shadow: 0 4px 16px rgba(239,68,68,0.4); }
+
+    .spinner { width: 14px; height: 14px; border: 2px solid rgba(255,255,255,0.2); border-top-color: #fff; border-radius: 50%; animation: spin 0.6s linear infinite; display: inline-block; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @media (max-width: 640px) {
+      .admin-sidebar { display: none; }
+      .admin-main { padding: 20px 16px; }
+      .admin-topbar { padding: 0 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">FAM.</div>
+    <span class="login-label">Admin Dashboard</span>
+    <div class="login-field">
+      <label>Username</label>
+      <input class="login-input" type="text" id="login-user" placeholder="admin" autocomplete="username">
+    </div>
+    <div class="login-field">
+      <label>Password</label>
+      <input class="login-input" type="password" id="login-pass" placeholder="••••••••" autocomplete="current-password">
+    </div>
+    <button class="login-btn" id="login-btn"><i class="fas fa-sign-in-alt"></i> Masuk</button>
+    <div class="login-error" id="login-error">Username atau password salah.</div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard">
+  <div class="admin-topbar">
+    <div class="topbar-left">
+      <span class="topbar-logo">FAM.</span>
+      <span class="topbar-badge">ADMIN</span>
+    </div>
+    <div class="topbar-right">
+      <span class="topbar-user" id="topbar-user"></span>
+      <button class="logout-btn" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+  </div>
+
+  <div class="admin-layout">
+    <div class="admin-sidebar">
+      <span class="sidebar-label">Menu</span>
+      <button class="sidebar-btn active" data-panel="guestbook"><i class="fas fa-comments"></i> Guestbook</button>
+      <button class="sidebar-btn" data-panel="texts"><i class="fas fa-pen"></i> Edit Teks</button>
+      <button class="sidebar-btn" data-panel="photos"><i class="fas fa-images"></i> Foto</button>
+    </div>
+
+    <div class="admin-main">
+
+      <!-- GUESTBOOK PANEL -->
+      <div class="admin-panel active" id="panel-guestbook">
+        <div class="panel-title">Pesan Guestbook</div>
+        <div class="panel-sub">Kelola semua pesan dari pengunjung</div>
+        <div class="stats-row">
+          <div class="stat-card"><div class="stat-num" id="stat-total">—</div><div class="stat-label">Total Pesan</div></div>
+          <div class="stat-card"><div class="stat-num" id="stat-today">—</div><div class="stat-label">Hari Ini</div></div>
+        </div>
+        <div class="acard">
+          <div class="acard-title">Semua Pesan</div>
+          <div class="gb-list" id="gb-list">
+            <div class="empty-state"><i class="fas fa-spinner fa-spin"></i> Memuat...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TEXTS PANEL -->
+      <div class="admin-panel" id="panel-texts">
+        <div class="panel-title">Edit Teks Konten</div>
+        <div class="panel-sub">Perubahan langsung tampil di halaman utama</div>
+        <div class="acard">
+          <div class="acard-title">About Me</div>
+          <div class="text-fields">
+            <div><label class="field-label">Paragraf 1</label><textarea class="adm-textarea" id="txt-about-1" rows="3"></textarea></div>
+            <div><label class="field-label">Paragraf 2</label><textarea class="adm-textarea" id="txt-about-2" rows="4"></textarea></div>
+            <div><label class="field-label">Paragraf 3</label><textarea class="adm-textarea" id="txt-about-3" rows="3"></textarea></div>
+            <button class="save-btn" id="save-about"><i class="fas fa-save"></i> Simpan About</button>
+          </div>
+        </div>
+        <div class="acard">
+          <div class="acard-title">Hero Section</div>
+          <div class="text-fields">
+            <div><label class="field-label">Tag</label><input class="adm-input" id="txt-hero-tag" type="text"></div>
+            <div><label class="field-label">Quote</label><textarea class="adm-textarea" id="txt-hero-quote" rows="2"></textarea></div>
+            <button class="save-btn" id="save-hero"><i class="fas fa-save"></i> Simpan Hero</button>
+          </div>
+        </div>
+        <div class="acard">
+          <div class="acard-title">Internship</div>
+          <div class="text-fields">
+            <div><label class="field-label">Role & Periode</label><input class="adm-input" id="txt-intern-role" type="text"></div>
+            <div><label class="field-label">Deskripsi tugas (tiap baris = satu poin)</label><textarea class="adm-textarea" id="txt-intern-desc" rows="5"></textarea></div>
+            <button class="save-btn" id="save-intern"><i class="fas fa-save"></i> Simpan Internship</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHOTOS PANEL -->
+      <div class="admin-panel" id="panel-photos">
+        <div class="panel-title">Manajemen Foto</div>
+        <div class="panel-sub">Upload foto ke Supabase Storage lalu salin URL-nya</div>
+        <div class="acard">
+          <div class="acard-title">Upload Foto Baru</div>
+          <div class="upload-zone" id="upload-zone">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <p>Klik atau drag &amp; drop foto di sini</p>
+            <small>JPG, PNG, JPEG — maks 5MB per file</small>
+          </div>
+          <input type="file" id="file-input" accept="image/*" multiple>
+          <div id="upload-results" style="margin-top:14px;display:flex;flex-direction:column;gap:8px;"></div>
+        </div>
+        <div class="acard">
+          <div class="acard-title">Foto Tersimpan</div>
+          <div class="photo-grid" id="photo-grid">
+            <div class="empty-state"><i class="fas fa-spinner fa-spin"></i> Memuat...</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- Edit Modal -->
+<div class="overlay" id="edit-overlay">
+  <div class="modal-box">
+    <div class="modal-head">
+      <span>Edit Pesan</span>
+      <button class="btn-icon" id="edit-close" style="opacity:0.4"><i class="fas fa-times"></i></button>
+    </div>
+    <div style="margin-bottom:14px"><label class="field-label">Nama</label><input class="adm-input" id="edit-name" type="text"></div>
+    <div style="margin-bottom:18px"><label class="field-label">Pesan</label><textarea class="adm-textarea" id="edit-msg" rows="4"></textarea></div>
+    <div style="display:flex;gap:10px">
+      <button class="btn-cancel" id="edit-cancel">Batal</button>
+      <button class="save-btn" id="edit-save" style="margin-top:0;flex:1;justify-content:center"><i class="fas fa-save"></i> Simpan</button>
+    </div>
+  </div>
+</div>
+
+<!-- Confirm Delete Modal -->
+<div class="overlay" id="confirm-overlay">
+  <div class="confirm-box">
+    <div class="confirm-icon">🗑️</div>
+    <div class="confirm-title">Hapus Pesan?</div>
+    <div class="confirm-sub">Pesan akan dihapus permanen dan tidak bisa dikembalikan.</div>
+    <div class="confirm-btns">
+      <button class="btn-cancel" id="confirm-cancel">Batal</button>
+      <button class="btn-danger" id="confirm-ok">Hapus</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+//  KONFIGURASI SUPABASE
+// ============================================================
+const SB_URL = 'https://uiisytrqvxzglrtjoryc.supabase.co';
+const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVpaXN5dHJxdnh6Z2xydGpvcnljIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQxMTE0MjIsImV4cCI6MjA4OTY4NzQyMn0.gYIwWO5RpJneA8fO76AtKvnaogWh8cYrSfY35-dTlkk';
+const BUCKET = 'portfolio-photos';
+
+// ============================================================
+//  ADMIN CREDENTIALS  ← GANTI PASSWORD DI SINI
+// ============================================================
+const ADMIN_USERS = { 'fathir': 'fat1447' };
+// ============================================================
+
+const REST   = SB_URL + '/rest/v1';
+const STORE  = SB_URL + '/storage/v1';
+const H = { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=representation' };
+
+function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+// TOAST
+let tTimer;
+function toast(msg, type='success') {
+  const el = document.getElementById('toast');
+  const icons = { success:'check-circle', error:'exclamation-circle', info:'info-circle' };
+  el.className = 'toast toast-' + type;
+  el.innerHTML = `<i class="fas fa-${icons[type]}"></i> ${msg}`;
+  el.classList.add('show');
+  clearTimeout(tTimer);
+  tTimer = setTimeout(() => el.classList.remove('show'), 3200);
+}
+
+// API HELPER
+async function api(path, opts={}) {
+  const res = await fetch(REST + path, { headers: H, ...opts });
+  if (!res.ok) { const e = await res.json().catch(()=>({})); throw new Error(e.message || res.statusText); }
+  const t = await res.text();
+  return t ? JSON.parse(t) : [];
+}
+
+// ===== AUTH =====
+let loggedIn = false, curUser = '';
+
+function tryLogin() {
+  const u = document.getElementById('login-user').value.trim();
+  const p = document.getElementById('login-pass').value;
+  const errEl = document.getElementById('login-error');
+  if (ADMIN_USERS[u] && ADMIN_USERS[u] === p) {
+    loggedIn = true; curUser = u;
+    const ls = document.getElementById('login-screen');
+    ls.classList.add('hidden');
+    setTimeout(() => { ls.style.display='none'; document.getElementById('dashboard').classList.add('active'); }, 420);
+    document.getElementById('topbar-user').textContent = u;
+    sessionStorage.setItem('fam_adm', u);
+    errEl.classList.remove('show');
+    init();
+  } else {
+    errEl.classList.add('show');
+    const pi = document.getElementById('login-pass');
+    pi.classList.add('error');
+    setTimeout(() => pi.classList.remove('error'), 1500);
+  }
+}
+
+document.getElementById('login-btn').addEventListener('click', tryLogin);
+document.addEventListener('keydown', e => { if (e.key==='Enter' && !loggedIn) tryLogin(); });
+document.getElementById('logout-btn').addEventListener('click', () => { sessionStorage.removeItem('fam_adm'); location.reload(); });
+
+// Restore session
+const savedAdm = sessionStorage.getItem('fam_adm');
+if (savedAdm && ADMIN_USERS[savedAdm] !== undefined) {
+  curUser = savedAdm; loggedIn = true;
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('dashboard').classList.add('active');
+  document.getElementById('topbar-user').textContent = savedAdm;
+  setTimeout(init, 80);
+}
+
+// SIDEBAR
+document.querySelectorAll('.sidebar-btn[data-panel]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.sidebar-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + btn.dataset.panel).classList.add('active');
+  });
+});
+
+function init() { loadGB(); loadTexts(); loadPhotos(); }
+
+// =========================================================
+// GUESTBOOK
+// =========================================================
+let entries = [], delId = null, editId = null;
+
+async function loadGB() {
+  const list = document.getElementById('gb-list');
+  list.innerHTML = '<div class="empty-state"><i class="fas fa-spinner fa-spin"></i> Memuat...</div>';
+  try {
+    entries = await api('/guestbook?order=created_at.desc');
+    renderGB();
+  } catch(e) {
+    list.innerHTML = `<div class="empty-state" style="color:#fca5a5">Error: ${esc(e.message)}<br><small>Pastikan tabel "guestbook" sudah dibuat di Supabase</small></div>`;
+  }
+}
+
+function renderGB() {
+  const list = document.getElementById('gb-list');
+  document.getElementById('stat-total').textContent = entries.length;
+  const today = new Date().toLocaleDateString('id-ID');
+  document.getElementById('stat-today').textContent = entries.filter(e => new Date(e.created_at).toLocaleDateString('id-ID') === today).length;
+  if (!entries.length) { list.innerHTML = '<div class="empty-state">Belum ada pesan 📭</div>'; return; }
+  list.innerHTML = entries.map(e => `
+    <div class="gb-entry-admin" id="e-${e.id}">
+      <div class="gb-entry-info">
+        <div class="gb-entry-name">${esc(e.name)}</div>
+        <div class="gb-entry-msg">${esc(e.msg)}</div>
+        <div class="gb-entry-time">${e.time || new Date(e.created_at).toLocaleString('id-ID')}</div>
+      </div>
+      <div class="gb-entry-actions">
+        <button class="btn-icon btn-edit" onclick="openEdit(${e.id})" title="Edit"><i class="fas fa-pen"></i></button>
+        <button class="btn-icon btn-del"  onclick="openDel(${e.id})"  title="Hapus"><i class="fas fa-trash"></i></button>
+      </div>
+    </div>`).join('');
+}
+
+// Delete
+window.openDel = id => { delId = id; document.getElementById('confirm-overlay').classList.add('open'); };
+document.getElementById('confirm-cancel').addEventListener('click', () => document.getElementById('confirm-overlay').classList.remove('open'));
+document.getElementById('confirm-ok').addEventListener('click', async () => {
+  document.getElementById('confirm-overlay').classList.remove('open');
+  try {
+    await api('/guestbook?id=eq.' + delId, { method: 'DELETE' });
+    entries = entries.filter(e => e.id !== delId);
+    renderGB();
+    toast('Pesan dihapus');
+  } catch(e) { toast('Gagal hapus: ' + e.message, 'error'); }
+  delId = null;
+});
+
+// Edit
+window.openEdit = id => {
+  editId = id;
+  const e = entries.find(x => x.id === id);
+  if (!e) return;
+  document.getElementById('edit-name').value = e.name;
+  document.getElementById('edit-msg').value  = e.msg;
+  document.getElementById('edit-overlay').classList.add('open');
+};
+['edit-close','edit-cancel'].forEach(id => document.getElementById(id).addEventListener('click', () => document.getElementById('edit-overlay').classList.remove('open')));
+document.getElementById('edit-save').addEventListener('click', async () => {
+  const name = document.getElementById('edit-name').value.trim();
+  const msg  = document.getElementById('edit-msg').value.trim();
+  if (!name || !msg) { toast('Nama dan pesan wajib diisi', 'error'); return; }
+  document.getElementById('edit-overlay').classList.remove('open');
+  try {
+    await api('/guestbook?id=eq.' + editId, { method: 'PATCH', body: JSON.stringify({ name, msg }) });
+    const i = entries.findIndex(x => x.id === editId);
+    if (i !== -1) { entries[i].name = name; entries[i].msg = msg; }
+    renderGB();
+    toast('Pesan diperbarui ✓');
+  } catch(e) { toast('Gagal update: ' + e.message, 'error'); }
+  editId = null;
+});
+
+// =========================================================
+// TEXTS
+// =========================================================
+const DEFAULTS = {
+  'about-1': 'Saya lulusan 2025 dari jurusan Teknik Kendaraan Ringan Otomotif dengan minat khusus pada mesin dan kelistrikan.',
+  'about-2': 'Ketertarikan saya tumbuh sejak kecil karena ayah saya seorang mekanik. Pengalaman PKL di PT. KAI mengasah kemampuan teknis dan kerja tim saya.',
+  'about-3': 'Tujuan saya adalah menjadi Instruktur Otomotif agar bisa berbagi ilmu hingga ke jenjang supervisor.',
+  'hero-tag': '< Automotive Engineer >',
+  'hero-quote': '"Jadilah Lebih Dari Sekedar Impian, Wujudkan Dengan Tindakan"',
+  'intern-role': 'Asisten Rolling Stock (September - November 2023)',
+  'intern-desc': 'Membantu melakukan perbaikan dan perawatan pada seluruh bagian lokomotif.\nBekerja sama dalam mengerjakan instruksi Kepala Mekanik atau Ketua Tim.\nMenyiapkan peralatan untuk perbaikan dan perawatan yang akan digunakan.'
+};
+
+async function loadTexts() {
+  try {
+    const rows = await api('/site_texts?select=key,value');
+    const map = Object.fromEntries(rows.map(r => [r.key, r.value]));
+    Object.keys(DEFAULTS).forEach(k => { const el = document.getElementById('txt-'+k); if (el) el.value = map[k] ?? DEFAULTS[k]; });
+  } catch { Object.keys(DEFAULTS).forEach(k => { const el = document.getElementById('txt-'+k); if (el) el.value = DEFAULTS[k]; }); }
+}
+
+async function saveTxts(keys, btnId, lbl) {
+  const btn = document.getElementById(btnId);
+  btn.innerHTML = '<span class="spinner"></span> Menyimpan...'; btn.disabled = true;
+  try {
+    for (const k of keys) {
+      const val = document.getElementById('txt-'+k)?.value.trim() ?? '';
+      try {
+        const exist = await api('/site_texts?key=eq.'+k);
+        if (exist.length) await api('/site_texts?key=eq.'+k, { method:'PATCH', body: JSON.stringify({ value: val }) });
+        else              await api('/site_texts', { method:'POST', body: JSON.stringify({ key: k, value: val }) });
+      } catch(e) { throw e; }
+    }
+    btn.classList.add('ok'); btn.innerHTML = '<i class="fas fa-check"></i> Tersimpan!';
+    toast('Konten berhasil disimpan ✓');
+    setTimeout(() => { btn.classList.remove('ok'); btn.innerHTML = '<i class="fas fa-save"></i> '+lbl; btn.disabled = false; }, 2200);
+  } catch(e) {
+    toast('Gagal: ' + e.message, 'error');
+    btn.innerHTML = '<i class="fas fa-save"></i> '+lbl; btn.disabled = false;
+  }
+}
+
+document.getElementById('save-about').addEventListener('click',  () => saveTxts(['about-1','about-2','about-3'], 'save-about', 'Simpan About'));
+document.getElementById('save-hero').addEventListener('click',   () => saveTxts(['hero-tag','hero-quote'], 'save-hero', 'Simpan Hero'));
+document.getElementById('save-intern').addEventListener('click', () => saveTxts(['intern-role','intern-desc'], 'save-intern', 'Simpan Internship'));
+
+// =========================================================
+// PHOTOS — Supabase Storage
+// =========================================================
+async function loadPhotos() {
+  const grid = document.getElementById('photo-grid');
+  try {
+    const res = await fetch(`${STORE}/object/list/${BUCKET}`, {
+      method: 'POST', headers: H,
+      body: JSON.stringify({ limit: 100, offset: 0, sortBy: { column:'created_at', order:'desc' } })
+    });
+    const files = await res.json();
+    if (!Array.isArray(files) || !files.filter(f=>f.name&&f.name!=='.emptyFolderPlaceholder').length) {
+      grid.innerHTML = '<div class="empty-state">Belum ada foto. Upload dulu di atas!<br><small>Pastikan bucket "'+BUCKET+'" sudah dibuat di Supabase Storage (Public)</small></div>'; return;
+    }
+    grid.innerHTML = files.filter(f=>f.name&&f.name!=='.emptyFolderPlaceholder').map(f => {
+      const url = `${SB_URL}/storage/v1/object/public/${BUCKET}/${f.name}`;
+      return `<div class="photo-card">
+        <img src="${url}" alt="${esc(f.name)}" onerror="this.style.opacity='0.15'">
+        <div class="photo-name">${esc(f.name)}</div>
+        <div class="photo-overlay">
+          <button class="btn-icon btn-edit" title="Salin URL" onclick="copyURL('${url}')"><i class="fas fa-copy"></i></button>
+          <button class="btn-icon btn-del"  title="Hapus" onclick="delPhoto('${f.name}',this)"><i class="fas fa-trash"></i></button>
+        </div>
+      </div>`;
+    }).join('');
+  } catch(e) {
+    grid.innerHTML = `<div class="empty-state" style="color:#fca5a5">Gagal memuat: ${esc(e.message)}</div>`;
+  }
+}
+
+window.copyURL = url => {
+  navigator.clipboard.writeText(url).then(() => toast('URL disalin! Tempel ke src="" di index.html'));
+};
+
+window.delPhoto = async (name, btn) => {
+  if (!confirm('Hapus foto "'+name+'"?')) return;
+  try {
+    await fetch(`${STORE}/object/${BUCKET}/${name}`, { method:'DELETE', headers: H });
+    btn.closest('.photo-card').remove();
+    toast('Foto dihapus');
+  } catch(e) { toast('Gagal hapus: '+e.message, 'error'); }
+};
+
+// Upload
+const uZone = document.getElementById('upload-zone');
+const fInput = document.getElementById('file-input');
+uZone.addEventListener('click', () => fInput.click());
+uZone.addEventListener('dragover', e => { e.preventDefault(); uZone.classList.add('drag'); });
+uZone.addEventListener('dragleave', () => uZone.classList.remove('drag'));
+uZone.addEventListener('drop', e => { e.preventDefault(); uZone.classList.remove('drag'); doUpload(e.dataTransfer.files); });
+fInput.addEventListener('change', () => { doUpload(fInput.files); fInput.value=''; });
+
+async function doUpload(files) {
+  for (const file of files) {
+    if (file.size > 5*1024*1024) { toast(file.name+' terlalu besar (maks 5MB)', 'error'); continue; }
+    const res = document.getElementById('upload-results');
+    const row = document.createElement('div');
+    row.style.cssText = 'display:flex;align-items:center;gap:10px;padding:9px 14px;border-radius:9px;background:rgba(59,130,246,0.07);border:1px solid rgba(59,130,246,0.14);font-size:0.78rem;font-family:JetBrains Mono,monospace;';
+    row.innerHTML = `<span class="spinner"></span> Mengupload ${esc(file.name)}...`;
+    res.prepend(row);
+    try {
+      const safe = Date.now()+'_'+file.name.replace(/[^a-zA-Z0-9._-]/g,'_');
+      const up = await fetch(`${STORE}/object/${BUCKET}/${safe}`, {
+        method:'POST', headers:{ 'apikey':SB_KEY, 'Authorization':'Bearer '+SB_KEY }, body: file
+      });
+      if (!up.ok) throw new Error((await up.json()).message || up.statusText);
+      const url = `${SB_URL}/storage/v1/object/public/${BUCKET}/${safe}`;
+      row.innerHTML = `<i class="fas fa-check-circle" style="color:#86efac"></i> <span style="color:#86efac">${esc(file.name)}</span> <button onclick="copyURL('${url}')" style="margin-left:auto;padding:4px 10px;border-radius:6px;border:1px solid rgba(59,130,246,0.3);background:rgba(59,130,246,0.1);color:#93c5fd;cursor:pointer;font-size:0.7rem;font-family:inherit">Salin URL</button>`;
+      toast(file.name+' berhasil diupload!');
+      loadPhotos();
+    } catch(e) {
+      row.innerHTML = `<i class="fas fa-times-circle" style="color:#fca5a5"></i> <span style="color:#fca5a5">Gagal: ${esc(e.message)}</span>`;
+      toast('Upload gagal: '+e.message, 'error');
+    }
+  }
+}
+</script>
+</body>
+</html>
