@@ -1,61 +1,90 @@
+const https = require('https');
+
 module.exports = async function handler(req, res) {
-  // Hanya terima POST
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
+  // CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-  const { message, history = [] } = req.body;
+  if (req.method === 'OPTIONS') return res.status(200).end();
+  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  if (!message || typeof message !== 'string') {
-    return res.status(400).json({ error: 'Message required' });
-  }
+  const { message, history = [] } = req.body || {};
+
+  if (!message) return res.status(400).json({ error: 'Message required' });
 
   const SYSTEM_PROMPT = `Kamu adalah asisten AI untuk portofolio Fathir Ahmad Maulana.
 Jawab hanya pertanyaan yang berhubungan dengan Fathir. Gunakan bahasa yang sama dengan pertanyaan (Indonesia atau Inggris).
-Berikut profil lengkap Fathir:
-- Nama: Fathir Ahmad Maulana
+Profil Fathir:
 - Lulus 2025, jurusan Teknik Kendaraan Ringan Otomotif (SMK)
 - Keahlian: Fotografi (95%), Ms. Word (70%), HTML (68%), CSS (65%), JavaScript (65%), Ms. PPT (64%), Ms. Excel (54%)
-- Pengalaman Magang: PT. KAI (Kereta Api Indonesia) sebagai Asisten Rolling Stock, September-November 2023, Depo Lokomotif Besar A Cipinang. Tugas: membantu perbaikan & perawatan lokomotif, bekerja sama dengan Kepala Mekanik.
-- Organisasi: Sadulur Sepoor Indonesia (komunitas pecinta kereta api): Anggota (2022-2024), Divisi Dokumentasi (2024-2025), Divisi SDM (2025), Ketua Umum (2025-sekarang)
-- UKM: NUSAPALA (pendakian gunung & alam bebas) dan SINATERA (divisi musik & seni, teater kampus)
-- Sertifikat: Front-End Web Developer (Udemy), Information Security (Cyber Academy Indonesia), Peserta TEKIRO Mechanic Competition 2025, Piagam KAI Posko Lebaran 2025, Sertifikat Kompetensi KKNI Level III
-- Tujuan karier: menjadi Instruktur Otomotif, berbagi ilmu hingga level supervisor
-- Kontak: +62 821-1296-4343, fatirahmad067@gmail.com, Instagram @eskopss / @fagatigir
-Jawab dengan ramah, singkat (maksimal 3 kalimat), dan natural. Jika ditanya di luar profil Fathir, tolak dengan sopan.`;
+- Magang: PT. KAI sebagai Asisten Rolling Stock, Sep-Nov 2023, Depo Lokomotif Besar A Cipinang
+- Organisasi: Sadulur Sepoor Indonesia — Anggota (2022-2024), Divisi Dokumentasi (2024-2025), Divisi SDM (2025), Ketua Umum (2025-sekarang)
+- UKM: NUSAPALA (alam bebas), SINATERA (musik & seni)
+- Sertifikat: Front-End Web Developer (Udemy), Information Security (Cyber Academy), TEKIRO Mechanic Competition 2025, Piagam KAI 2025, Sertifikat Kompetensi KKNI Level III
+- Tujuan: Instruktur Otomotif
+- Kontak: +62 821-1296-4343, fatirahmad067@gmail.com, IG @eskopss / @fagatigir
+Jawab ramah, singkat (max 3 kalimat).`;
 
-  try {
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': process.env.ANTHROPIC_API_KEY,
-        'anthropic-version': '2023-06-01'
-      },
-      body: JSON.stringify({
-        model: 'claude-haiku-4-5-20251001', // Haiku: cepat & murah untuk chat
-        max_tokens: 300,
-        system: SYSTEM_PROMPT,
-        messages: [
-          ...history.slice(-6), // Kirim max 6 pesan terakhir sebagai konteks
-          { role: 'user', content: message }
-        ]
-      })
+  const messages = [
+    ...history.slice(-6),
+    { role: 'user', content: message }
+  ];
+
+  const body = JSON.stringify({
+    model: 'claude-haiku-4-5-20251001',
+    max_tokens: 300,
+    system: SYSTEM_PROMPT,
+    messages
+  });
+
+  const apiKey = process.env.ANTHROPIC_API_KEY;
+  if (!apiKey) {
+    console.error('ANTHROPIC_API_KEY is not set');
+    return res.status(500).json({ error: 'API key not configured', reply: null });
+  }
+
+  const options = {
+    hostname: 'api.anthropic.com',
+    path: '/v1/messages',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Content-Length': Buffer.byteLength(body),
+      'x-api-key': apiKey,
+      'anthropic-version': '2023-06-01'
+    }
+  };
+
+  return new Promise((resolve) => {
+    const apiReq = https.request(options, (apiRes) => {
+      let data = '';
+      apiRes.on('data', chunk => { data += chunk; });
+      apiRes.on('end', () => {
+        try {
+          const parsed = JSON.parse(data);
+          if (parsed.error) {
+            console.error('Anthropic error:', JSON.stringify(parsed.error));
+            res.status(500).json({ error: parsed.error.message, reply: null });
+          } else {
+            const reply = parsed.content?.[0]?.text || null;
+            res.status(200).json({ reply });
+          }
+        } catch (e) {
+          console.error('Parse error:', e.message, 'Raw:', data);
+          res.status(500).json({ error: 'Parse error', reply: null });
+        }
+        resolve();
+      });
     });
 
-    if (!response.ok) {
-      const err = await response.json();
-      console.error('Anthropic error:', err);
-      return res.status(500).json({ error: 'AI error', reply: null });
-    }
+    apiReq.on('error', (e) => {
+      console.error('Request error:', e.message);
+      res.status(500).json({ error: e.message, reply: null });
+      resolve();
+    });
 
-    const data = await response.json();
-    const reply = data.content?.[0]?.text || null;
-
-    return res.status(200).json({ reply });
-
-  } catch (error) {
-    console.error('Server error:', error);
-    return res.status(500).json({ error: 'Server error', reply: null });
-  }
-}
+    apiReq.write(body);
+    apiReq.end();
+  });
+};
