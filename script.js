@@ -113,18 +113,26 @@ const T = {
     // Org
     "title-org":"Organisasi","org-about-title":"Sadulur Sepoor Indonesia",
     "org-about-subtitle":"Komunitas Pecinta Kereta Api",
-    "org-about-desc":"Wadah berkumpulnya para pecinta kereta api (railfans) untuk berbagi informasi, melakukan dokumentasi, dan mempererat silaturahmi. Berawal dari hobi, saya berkontribusi dan berkembang bersama komunitas ini dari anggota biasa hingga dipercaya menjadi Ketua Umum.",
+    "org-about-desc":"Sadulur Sepoor Indonesia (SSI) merupakan organisasi nirlaba yang berfungsi sebagai wadah integrasi bagi para antusias perkeretaapian (railfans) di Indonesia. Komunitas ini berfokus pada dokumentasi sejarah, berbagi informasi teknis terkini, serta mempererat silaturahmi antaranggota melalui berbagai kegiatan edukatif dan sosial yang berkaitan dengan dunia transportasi rel. Berawal dari kecintaan mendalam terhadap dunia kereta api, saya bergabung sebagai anggota biasa yang aktif dalam kegiatan dokumentasi dan diskusi teknis. Melalui konsistensi, integritas, dan dedikasi dalam berorganisasi, saya mendapatkan kepercayaan dari para anggota untuk mengemban tanggung jawab yang lebih besar, hingga akhirnya terpilih menjadi Ketua Umum.",
     "org-track-title":"Riwayat Jabatan Sadulur Sepoor",
-    "org-1-title":"Anggota","org-1-desc":"<li>Mengikuti kegiatan komunitas.</li><li>Menambah wawasan perkeretaapian.</li>",
-    "org-2-title":"Divisi Dokumentasi","org-2-desc":"<li>Mengabadikan momen kegiatan.</li><li>Membuat film dokumenter.</li>",
-    "org-3-title":"Divisi MSDM","org-3-desc":"<li>Mengelola data anggota.</li><li>Rekrutmen &amp; seleksi anggota baru.</li>",
-    "org-4-title":"Ketua Umum","org-4-desc":"<li>Memimpin seluruh kegiatan operasional.</li><li>Mengintegrasikan sistem teknologi website.</li>",
+    "org-1-title":"Anggota Biasa","org-1-desc":"<li>Aktif mengikuti kegiatan rutin komunitas, baik diskusi daring maupun pertemuan lapangan (gathering).</li><li>Mendukung program kerja organisasi dengan menjadi partisipan yang disiplin terhadap aturan keselamatan kereta api.</li><li>Membangun relasi dan jaringan sesama pecinta kereta api di tingkat regional.</li>",
+    "org-2-title":"Staf Divisi Dokumentasi","org-2-desc":"<li>Melakukan dokumentasi visual (foto/video) terhadap sarana, prasarana, dan momen bersejarah perkeretaapian Indonesia.</li><li>Mengelola aset digital komunitas untuk kebutuhan konten media sosial dan publikasi.</li><li>Menghasilkan karya dokumentasi yang edukatif mengenai perkembangan infrastruktur perkeretaapian nasional.</li>",
+    "org-3-title":"Pengurus Divisi MSDM","org-3-desc":"<li>Mengelola basis data keanggotaan dan proses rekrutmen anggota baru secara sistematis.</li><li>Merancang program pengembangan kapasitas anggota (pelatihan/edukasi) agar selaras dengan visi komunitas.</li><li>Menjaga iklim organisasi yang kondusif melalui fungsi mediasi dan penguatan solidaritas internal.</li>",
+    "org-4-title":"Ketua Umum","org-4-desc":"<li><strong>Kepemimpinan Strategis:</strong> Bertanggung jawab penuh dalam memimpin visi dan misi organisasi, serta mengoordinasikan seluruh wilayah kepengurusan SSI di tingkat nasional.</li><li><strong>Manajemen Organisasi:</strong> Mengelola struktur internal, memperkuat sistem administrasi, dan memastikan keberlanjutan regenerasi anggota melalui program-program yang inklusif.</li><li><strong>Kemitraan Strategis:</strong> Membangun dan menjaga hubungan baik dengan pihak regulator (PT KAI dan DJKA) dalam mendukung kampanye keselamatan perjalanan kereta api.</li><li><strong>Manajemen Acara:</strong> Menyukseskan berbagai agenda besar berskala nasional, mulai dari kegiatan Joyriding lintas provinsi hingga pameran dokumentasi perkeretaapian.</li>",
     "org-now":"sekarang","react-label-org":"Berikan reaksi:",
     "ukm-title":"Unit Kegiatan Mahasiswa (UKM)",
     "ukm-1-title":"NUSAPALA","ukm-1-sub":"Mahasiswa Pecinta Alam",
     "ukm-1-desc":"Aktif dalam kegiatan pendakian gunung, eksplorasi alam, serta melatih daya juang (grit) dan ketahanan fisik maupun mental di alam bebas.",
-    "ukm-2-title":"SINATERA","ukm-2-sub":"Divisi Musik &amp; Seni",
-    "ukm-2-desc":"Menyalurkan kreativitas seni melalui divisi musik. Terlibat dalam berbagai pementasan dan kolaborasi karya teater serta pertunjukan kampus.",
+    "ukm-2-title":"SINATERA","ukm-2-sub":"Mahasiswa Pecinta Seni",
+    "ukm-2-desc":"Menyalurkan kreativitas seni melalui divisi musik. Terlibat dalam berbagai pementasan.",
+    "title-projects":"Project IT",
+    "nav-projects":"Project","mnav-projects":"Project",
+    "proj-1-badge":"Game / Simulasi","proj-1-title":"Simulasi Train Dispatcher",
+    "proj-1-desc":"Game simulasi interaktif berbasis web yang menempatkan pemain sebagai PPKA (Pengatur Perjalanan Kereta Api). Pemain bertugas mengatur lalu lintas kereta api secara real-time — dari memberi sinyal, mengatur jalur, hingga memastikan setiap perjalanan berjalan aman dan tepat waktu. Dibangun dengan semangat edukasi dan kecintaan terhadap perkeretaapian Indonesia.",
+    "proj-1-link":"Lihat Project →",
+    "proj-2-badge":"Website","proj-2-title":"Website Sadulur Sepoor Indonesia",
+    "proj-2-desc":"Website resmi komunitas Sadulur Sepoor Indonesia (SSI) yang dirancang sebagai pusat informasi, dokumentasi, dan penghubung antaranggota railfan se-Indonesia. Menampilkan profil organisasi, galeri kegiatan, berita terkini seputar perkeretaapian, serta berbagai program komunitas yang dapat diakses oleh publik.",
+    "proj-2-link":"Lihat Project →",
     // Internship
     "title-intern":"Magang",
     "intern-role":"Asisten Rolling Stock (September - November 2023)<br>Depo Lokomotif Besar A Cipinang",
@@ -160,18 +168,26 @@ const T = {
     "desc-contact":"Let's discuss and collaborate!",
     "title-org":"Organization","org-about-title":"Sadulur Sepoor Indonesia",
     "org-about-subtitle":"Train Enthusiast Community",
-    "org-about-desc":"A gathering place for train enthusiasts (railfans) to share information, document activities, and strengthen bonds. Starting from a hobby, I contributed and grew with this community from a regular member to being entrusted as the Chairman.",
+    "org-about-desc":"Sadulur Sepoor Indonesia (SSI) is a non-profit organization serving as an integration platform for railway enthusiasts (railfans) across Indonesia. The community focuses on historical documentation, sharing the latest technical information, and strengthening bonds among members through various educational and social activities related to rail transportation. Starting from a deep love of the railway world, I joined as a regular member active in documentation activities and technical discussions. Through consistency, integrity, and dedication in the organization, I gained the trust of the members to take on greater responsibilities, eventually being elected as Chairman.",
     "org-track-title":"Position Track Record",
-    "org-1-title":"Member","org-1-desc":"<li>Participated in community activities.</li><li>Expanded railway knowledge.</li>",
-    "org-2-title":"Documentation Division","org-2-desc":"<li>Captured moments during events.</li><li>Created documentary films.</li>",
-    "org-3-title":"HR Division","org-3-desc":"<li>Managed member data.</li><li>Recruited and selected new members.</li>",
-    "org-4-title":"Chairman","org-4-desc":"<li>Leading all operational activities.</li><li>Integrating website technology systems.</li>",
+    "org-1-title":"Regular Member","org-1-desc":"<li>Actively participating in routine community activities, both online discussions and field meetings (gatherings).</li><li>Supporting the organization's work programs by being a participant disciplined in railway safety rules.</li><li>Building relationships and networks among fellow railway enthusiasts at the regional level.</li>",
+    "org-2-title":"Documentation Division Staff","org-2-desc":"<li>Conducting visual documentation (photos/videos) of Indonesian railway infrastructure, facilities, and historic moments.</li><li>Managing the community's digital assets for social media content and publication needs.</li><li>Producing educational documentary work on the development of national railway infrastructure.</li>",
+    "org-3-title":"HR Division Officer","org-3-desc":"<li>Managing the membership database and new member recruitment process systematically.</li><li>Designing member capacity development programs (training/education) aligned with the community's vision.</li><li>Maintaining a conducive organizational climate through mediation and strengthening internal solidarity.</li>",
+    "org-4-title":"Chairman","org-4-desc":"<li><strong>Strategic Leadership:</strong> Fully responsible for leading the vision and mission of the organization, and coordinating all SSI management regions at the national level.</li><li><strong>Organizational Management:</strong> Managing internal structure, strengthening the administration system, and ensuring sustainable member regeneration through inclusive programs.</li><li><strong>Strategic Partnerships:</strong> Building and maintaining good relations with regulators (PT KAI and DJKA) in supporting railway safety campaigns.</li><li><strong>Event Management:</strong> Successfully organizing large-scale national events, from inter-provincial Joyriding activities to railway documentation exhibitions.</li>",
     "org-now":"present","react-label-org":"Leave a reaction:",
     "ukm-title":"Student Activity Units (UKM)",
     "ukm-1-title":"NUSAPALA","ukm-1-sub":"Nature Enthusiast Students",
     "ukm-1-desc":"Active in mountaineering, nature exploration, and training grit, physical, and mental resilience in the great outdoors.",
-    "ukm-2-title":"SINATERA","ukm-2-sub":"Music &amp; Arts Division",
-    "ukm-2-desc":"Channeling artistic creativity through the music division. Involved in various performances, theatrical collaborations, and campus shows.",
+    "ukm-2-title":"SINATERA","ukm-2-sub":"Arts Enthusiast Students",
+    "ukm-2-desc":"Channeling artistic creativity through the music division. Involved in various performances.",
+    "title-projects":"IT Projects",
+    "nav-projects":"Projects","mnav-projects":"Projects",
+    "proj-1-badge":"Game / Simulation","proj-1-title":"Train Dispatcher Simulation",
+    "proj-1-desc":"An interactive web-based simulation game that places the player as a PPKA (Train Traffic Controller). Players are responsible for managing train traffic in real-time — from giving signals and managing routes, to ensuring every journey runs safely and on time. Built with a spirit of education and love for Indonesian railways.",
+    "proj-1-link":"View Project →",
+    "proj-2-badge":"Website","proj-2-title":"Sadulur Sepoor Indonesia Website",
+    "proj-2-desc":"The official website of the Sadulur Sepoor Indonesia (SSI) community, designed as a center for information, documentation, and connection among railfan members across Indonesia. Features the organization's profile, activity gallery, latest railway news, and various community programs accessible to the public.",
+    "proj-2-link":"View Project →",
     "title-intern":"Internship",
     "intern-role":"Rolling Stock Assistant (September - November 2023)<br>Depo Lokomotif Besar A Cipinang",
     "intern-desc":"<li><span class=\"arrow-blue\">→</span>Assisted in the repair and maintenance of all locomotive parts.</li><li><span class=\"arrow-yellow\">→</span>Collaborated to execute instructions from the Chief Mechanic or Team Leader.</li><li><span class=\"arrow-blue\">→</span>Prepared tools required for repair and maintenance tasks.</li>",
@@ -198,7 +214,8 @@ const DATANUM = {
     "title-edu":      "03 — PENDIDIKAN",
     "title-org":      "04 — ORGANISASI",
     "title-intern":   "05 — MAGANG",
-    "title-cert":     "06 — SERTIFIKAT",
+    "title-projects": "06 — PROJECT",
+    "title-cert":     "07 — SERTIFIKAT",
     "title-guestbook":"06 — BUKU TAMU",
     "title-contact":  "07 — KONTAK"
   },
@@ -207,7 +224,8 @@ const DATANUM = {
     "title-skills":   "02 — SKILLS",
     "title-org":      "03 — ORG",
     "title-intern":   "05 — INTERNSHIP",
-    "title-cert":     "05 — CERT",
+    "title-projects": "06 — PROJECTS",
+    "title-cert":     "07 — CERT",
     "title-guestbook":"06 — GUESTBOOK",
     "title-contact":  "07 — CONTACT"
   }
@@ -517,6 +535,7 @@ Berikut profil Fathir:
 - Sertifikat: Front-End Web Developer (Udemy), Information Security (Cyber Academy Indonesia), Peserta TEKIRO Mechanic Competition 2025, Piagam KAI Posko Lebaran 2025, Sertifikat Kompetensi KKNI Level III
 - Tujuan karier: menjadi Instruktur Otomotif, ingin berbagi ilmu hingga level supervisor
 - Kontak: +62 821-1296-4343, fatirahmad067@gmail.com, Instagram @eskopss / @fagatigir
+- Project IT: (1) Game Simulasi Train Dispatcher (https://sadulursepoor.web.id/simulasi%20ppka/) — game simulasi PPKA berbasis web; (2) Website Sadulur Sepoor Indonesia (https://sadulursepoor.web.id/) — website resmi komunitas SSI
 Jawab dengan ramah, singkat (max 3 kalimat), dan natural.`;
 
 let aiOpen = false;
@@ -553,7 +572,7 @@ function addAIMessage(text, role) {
 // ============================================================
 // GEMINI API KEY
 // ============================================================
-const GEMINI_KEY = 'AIzaSyDUCxIk2t5XV9eXIkHDQ_6vvY8d2MadsdU';
+const GEMINI_KEY = 'AIzaSyCPDM02F3mXDlSg7ukFAO4C-6Sgc7yJwSg';
 // ============================================================
 
 async function sendAIMessage() {
