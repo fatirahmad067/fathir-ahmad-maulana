@@ -839,6 +839,304 @@ body.dark ::-webkit-scrollbar-thumb:hover { background: var(--blue-glow); }
   #lang-toggle, #theme-toggle { cursor: pointer; }
 }
 
+/* ===== MOBILE TIDY-UP ===== */
+@media (max-width: 768px) {
+
+  /* ── Main content padding ── */
+  .main-content {
+    padding: 80px 16px 60px;
+  }
+
+  .section-pad {
+    padding: 40px 0;
+  }
+
+  /* ── Card padding ── */
+  .card-pad {
+    padding: 22px 18px;
+  }
+
+  /* ── Hero ── */
+  .hero-section {
+    min-height: unset;
+    padding: 24px 0 40px;
+  }
+
+  .hero-inner {
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
+    gap: 32px;
+  }
+
+  .hero-text {
+    max-width: 100%;
+    min-width: unset;
+  }
+
+  .hero-name {
+    font-size: clamp(2rem, 8vw, 2.8rem);
+  }
+
+  .hero-tag {
+    font-size: 0.72rem;
+  }
+
+  .hero-quote {
+    font-size: 0.82rem;
+    text-align: left;
+  }
+
+  .hero-btns {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .btn-primary,
+  .btn-outline {
+    padding: 11px 24px;
+    font-size: 0.85rem;
+    width: 100%;
+    text-align: center;
+    display: block;
+  }
+
+  /* ── Profile photo ── */
+  .hero-img-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .profile-img-wrapper {
+    width: 200px;
+    height: 200px;
+  }
+
+  .image-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* ── Profile / Skills grid ── */
+  .profile-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* ── Info pills ── */
+  .pills-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .info-pill {
+    font-size: 0.72rem;
+    padding: 5px 12px;
+    word-break: break-all;
+  }
+
+  /* ── Section titles ── */
+  .section-title {
+    font-size: 1.4rem;
+  }
+
+  .section-heading {
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 28px;
+  }
+
+  /* ── Organization ── */
+  .org-main-inner {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .org-text {
+    min-width: unset;
+    max-width: 100%;
+  }
+
+  .org-photo-cols,
+  .org-photo-masonry {
+    min-width: unset;
+    width: 100%;
+    columns: 2;
+  }
+
+  .org-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .track-title {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+
+  /* ── UKM ── */
+  .ukm-header {
+    gap: 16px;
+  }
+
+  .ukm-logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .ukm-name {
+    font-size: 1.1rem;
+  }
+
+  .ukm-desc {
+    font-size: 0.85rem;
+    max-width: 100%;
+  }
+
+  .photo-grid-5 {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 8px;
+  }
+
+  .photo-grid-5 .photo-clickable img {
+    height: 80px;
+  }
+
+  /* ── Internship ── */
+  .intern-card {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .intern-accent-bar {
+    width: 100%;
+    height: 4px;
+    min-height: unset;
+  }
+
+  .intern-company {
+    font-size: 1.05rem;
+  }
+
+  .intern-photo {
+    aspect-ratio: 4/3;
+    border-radius: 12px;
+    max-height: 220px;
+  }
+
+  /* ── Certificates ── */
+  .cert-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+  }
+
+  .cert-info {
+    padding: 14px 12px;
+  }
+
+  .cert-name {
+    font-size: 0.88rem;
+  }
+
+  .cert-desc {
+    font-size: 0.75rem;
+  }
+
+  /* ── Contact card ── */
+  .contact-card {
+    padding: 32px 20px;
+  }
+
+  .contact-title {
+    font-size: 1.5rem;
+  }
+
+  .contact-btns {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .contact-btn {
+    padding: 12px 20px;
+    font-size: 0.88rem;
+    justify-content: center;
+  }
+
+  /* ── Guestbook ── */
+  .gb-submit {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ── Visitor bar ── */
+  .visitor-inner {
+    font-size: 0.72rem;
+    padding: 8px 16px;
+    gap: 6px;
+  }
+
+  .visitor-sep {
+    display: none;
+  }
+
+  /* ── Reaction row ── */
+  .reaction-row {
+    gap: 8px;
+  }
+
+  /* ── Nav controls ── */
+  .nav-inner {
+    padding: 0 14px;
+    height: 58px;
+  }
+
+  .nav-clock {
+    display: none;
+  }
+
+  #lang-toggle {
+    padding: 5px 10px;
+    font-size: 0.7rem;
+  }
+
+  #theme-toggle {
+    width: 34px;
+    height: 34px;
+  }
+
+  /* ── FAB buttons ── */
+  .fab-btn {
+    cursor: pointer;
+    right: 14px;
+    width: 46px;
+    height: 46px;
+  }
+
+  .fab-ai   { bottom: 72px; }
+  .fab-share{ bottom: 128px; }
+
+  /* ── Share modal ── */
+  .share-modal {
+    padding: 22px 18px 20px;
+  }
+
+  .share-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* ── AI Chat panel ── */
+  .ai-panel {
+    right: 8px;
+    left: 8px;
+    width: auto;
+    bottom: 72px;
+    max-height: 70vh;
+  }
+}
+
 /* ===== LAYOUT UTILITIES (for clean index.html) ===== */
 
 /* Nav */
@@ -912,12 +1210,7 @@ body.dark .color-blue { color: var(--blue-glow); }
   gap: 48px;
   flex-wrap: wrap;
 }
-@media (max-width: 768px) {
-  .hero-inner { flex-direction: column-reverse; align-items: center; text-align: center; }
-  .hero-text { max-width: 100%; min-width: unset; }
-  .hero-btns { justify-content: center; }
-  .hero-quote { text-align: left; }
-}
+/* hero mobile — handled in main mobile block below */
 .hero-text { flex: 1; min-width: 280px; max-width: 520px; }
 .hero-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; letter-spacing: 0.15em; color: var(--blue); text-transform: uppercase; margin-bottom: 12px; opacity: 0.9; }
 body.dark .hero-tag { color: var(--blue-glow); }
@@ -1219,10 +1512,7 @@ body.dark .inline-contact { border-color: rgba(88,166,255,0.1); }
 }
 .org-photo-cols .photo-clickable:hover img { transform: scale(1.04); }
 
-@media (max-width: 600px) {
-  .org-photo-cols { columns: 2; }
-  .org-main-inner { flex-direction: column; }
-}
+/* org-photo-cols mobile — handled in main mobile block below */
 
 /* ===== PHOTO NATURAL GRID fix (consistent row height option) ===== */
 .photo-natural-grid {
@@ -1285,11 +1575,7 @@ body.dark .fab-ai { box-shadow: 0 4px 20px rgba(88,166,255,0.4); }
 }
 .fab-share:hover { box-shadow: 0 6px 28px rgba(241,196,15,0.6); }
 
-@media (max-width: 768px) {
-  .fab-btn { cursor: pointer; right: 16px; width: 46px; height: 46px; }
-  .fab-ai   { bottom: 76px; }
-  .fab-share{ bottom: 132px; }
-}
+/* fab mobile — handled in main mobile block below */
 
 /* ===== AI CHAT PANEL ===== */
 .ai-panel {
@@ -1320,9 +1606,7 @@ body.dark .ai-panel {
   opacity: 1;
   pointer-events: all;
 }
-@media (max-width: 480px) {
-  .ai-panel { right: 8px; left: 8px; width: auto; bottom: 76px; }
-}
+/* ai-panel mobile — handled in main mobile block below */
 
 .ai-panel-header {
   display: flex; align-items: center; justify-content: space-between;
@@ -1434,6 +1718,43 @@ body.dark .ai-input { background: rgba(88,166,255,0.05); border-color: rgba(88,1
 .ai-send-btn:hover { transform: scale(1.1); box-shadow: 0 0 12px rgba(0,86,179,0.5); }
 body.dark .ai-send-btn { background: var(--blue-glow); color: #060c1a; }
 @media (max-width: 768px) { .ai-send-btn { cursor: pointer; } }
+
+/* ===== EXTRA SMALL SCREENS (<= 400px) ===== */
+@media (max-width: 400px) {
+  .main-content {
+    padding: 72px 12px 48px;
+  }
+
+  .card-pad {
+    padding: 18px 14px;
+  }
+
+  .hero-name {
+    font-size: clamp(1.7rem, 8vw, 2.2rem);
+  }
+
+  .profile-img-wrapper {
+    width: 170px;
+    height: 170px;
+  }
+
+  .org-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cert-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-inner {
+    padding: 0 10px;
+  }
+
+  #lang-toggle {
+    padding: 4px 8px;
+    font-size: 0.65rem;
+  }
+}
 
 /* ===== SHARE MODAL ===== */
 .share-overlay {
