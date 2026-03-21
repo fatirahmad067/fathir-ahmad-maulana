@@ -58,7 +58,7 @@ Jawab ramah, singkat (max 3 kalimat). Tolak pertanyaan di luar profil Fathir den
     }
   });
 
-  const path = `/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
+  const path = '/v1beta/models/gemini-2.5-flash:generateContent?key=' + apiKey;
 
   const options = {
     hostname: 'generativelanguage.googleapis.com',
