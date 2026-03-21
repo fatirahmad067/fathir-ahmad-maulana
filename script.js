@@ -592,3 +592,81 @@ shareCopyBtn.addEventListener('click', () => {
 // ===== UPDATE BILINGUAL for new elements in translations =====
 // Patch the existing langBtn listener to also handle AI & Share UI
 // (already handled above via the second langBtn event listener)
+// ===== WA TRAP POPUP =====
+const waTrapOverlay = document.getElementById('wa-trap-overlay');
+const waTrapClose   = document.getElementById('wa-trap-close');
+const ccardWa       = document.getElementById('ccard-wa');
+
+const WA_MESSAGE = 'Eits, tunggu dulu! 🤚\n\nDemi menjaga privasi Fathir, nomor WhatsApp-nya tidak dibagikan langsung ke publik.\n\nKamu bisa berkenalan terlebih dahulu — cukup perkenalkan dirimu dan sampaikan tujuanmu. Kalau sudah cocok, Fathir akan dengan senang hati memberimu nomor WA-nya. 😊';
+
+function openWaTrap() {
+  waTrapOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  const typingWrap = document.getElementById('wa-typing-wrap');
+  const bubbleMain = document.getElementById('wa-bubble-main');
+  const bubbleText = document.getElementById('wa-bubble-text');
+  const actions    = document.getElementById('wa-trap-actions');
+
+  // Reset state
+  typingWrap.style.display = 'flex';
+  bubbleMain.style.display  = 'none';
+  actions.style.display     = 'none';
+  bubbleText.textContent    = '';
+
+  // After "typing"... show message
+  setTimeout(() => {
+    typingWrap.style.display = 'none';
+    bubbleMain.style.display  = 'flex';
+    // Typewriter effect
+    let i = 0;
+    bubbleText.innerHTML = '';
+    const chars = WA_MESSAGE.split('');
+    function typeChar() {
+      if (i < chars.length) {
+        if (chars[i] === '\n') {
+          bubbleText.innerHTML += '<br>';
+        } else {
+          bubbleText.innerHTML += chars[i];
+        }
+        i++;
+        setTimeout(typeChar, 18);
+      } else {
+        // Show action buttons after typing done
+        setTimeout(() => {
+          actions.style.display = 'block';
+          actions.style.animation = 'msgPop 0.4s cubic-bezier(0.34,1.56,0.64,1)';
+        }, 300);
+      }
+    }
+    typeChar();
+  }, 1600);
+}
+
+function closeWaTrap() {
+  waTrapOverlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+if (ccardWa) {
+  ccardWa.addEventListener('click', openWaTrap);
+}
+if (waTrapClose) {
+  waTrapClose.addEventListener('click', closeWaTrap);
+}
+if (waTrapOverlay) {
+  waTrapOverlay.addEventListener('click', e => {
+    if (e.target === waTrapOverlay) closeWaTrap();
+  });
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && waTrapOverlay && waTrapOverlay.classList.contains('open')) {
+    closeWaTrap();
+  }
+});
+
+// ===== CONTACT NAV LINK FIX =====
+// Update nav Contact link to point to #contact section
+document.querySelectorAll('[id^="nav-contact"], [id^="mnav-contact"]').forEach(el => {
+  el.setAttribute('href', '#contact');
+});

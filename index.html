@@ -106,11 +106,6 @@
           <p>Ketertarikan saya tumbuh sejak kecil karena ayah saya seorang mekanik. Pengalaman PKL di PT. KAI mengasah kemampuan teknis dan kerja tim saya. Saya terbiasa bekerja dengan prinsip keamanan, ketelitian, dan dokumentasi.</p>
           <p>Tujuan saya adalah menjadi Instruktur Otomotif agar bisa berbagi ilmu hingga ke jenjang supervisor.</p>
         </div>
-        <div class="pills-row">
-          <span class="info-pill info-pill-yellow"><i class="fas fa-phone"></i> +62 821-1296-4343</span>
-          <span class="info-pill info-pill-blue"><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6b0d0a1f02190a03060a0f5b5d5c2b0c060a020745080406">[email&#160;protected]</a></span>
-          <span class="info-pill info-pill-pink"><i class="fab fa-instagram"></i> @eskopss / @fagatigir</span>
-        </div>
         <div class="reaction-row" data-section="profile">
           <span class="reaction-label" id="react-label-profile">Berikan reaksi:</span>
           <button class="react-btn" data-emoji="🔥" data-section="profile"><span>🔥</span><span class="react-num">0</span></button>
@@ -299,7 +294,52 @@
     </div>
   </section>
 
+  <!-- CONTACT -->
+  <section id="contact" class="reveal-item section-pad">
+    <div class="contact-hero-label" id="contact-label">07 — CONTACT</div>
+    <h2 class="contact-hero-title" id="contact-title">Mari Terhubung <span class="contact-wave">👋</span></h2>
+    <p class="contact-hero-sub" id="contact-sub">Punya pertanyaan, peluang, atau sekadar ingin berkenalan?<br>Pilih cara yang paling nyaman untukmu.</p>
 
+    <div class="contact-cards-row">
+
+      <!-- EMAIL -->
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fatirahmad067@gmail.com&su=Halo%20Fathir!&body=Halo%20Fathir,%0A%0APerkenalkan,%0ANama%20Lengkap%20:%20%0ATujuan%20:%20%0A%0ATerima%20kasih!" target="_blank" rel="noopener noreferrer" class="ccard ccard-email" id="ccard-email">
+        <div class="ccard-glow ccard-glow-blue"></div>
+        <div class="ccard-icon-wrap ccard-icon-blue"><i class="fas fa-paper-plane"></i></div>
+        <div class="ccard-body">
+          <span class="ccard-platform" id="ccard-email-platform">Gmail</span>
+          <span class="ccard-handle">fatirahmad067@gmail.com</span>
+          <span class="ccard-action" id="ccard-email-action">Kirim Email →</span>
+        </div>
+        <div class="ccard-badge ccard-badge-blue" id="ccard-email-badge">Resmi</div>
+      </a>
+
+      <!-- INSTAGRAM -->
+      <a href="https://instagram.com/eskopss" target="_blank" rel="noopener noreferrer" class="ccard ccard-ig" id="ccard-ig">
+        <div class="ccard-glow ccard-glow-pink"></div>
+        <div class="ccard-icon-wrap ccard-icon-ig"><i class="fab fa-instagram"></i></div>
+        <div class="ccard-body">
+          <span class="ccard-platform">Instagram</span>
+          <span class="ccard-handle">@eskopss</span>
+          <span class="ccard-action" id="ccard-ig-action">Buka Profil →</span>
+        </div>
+        <div class="ccard-badge ccard-badge-pink" id="ccard-ig-badge">Aktif</div>
+      </a>
+
+      <!-- WHATSAPP (trap) -->
+      <button class="ccard ccard-wa" id="ccard-wa">
+        <div class="ccard-glow ccard-glow-green"></div>
+        <div class="ccard-icon-wrap ccard-icon-wa"><i class="fab fa-whatsapp"></i></div>
+        <div class="ccard-body">
+          <span class="ccard-platform">WhatsApp</span>
+          <span class="ccard-handle">Nomor Privat 🔒</span>
+          <span class="ccard-action" id="ccard-wa-action">Chat Sekarang →</span>
+        </div>
+        <div class="ccard-badge ccard-badge-green" id="ccard-wa-badge">Private</div>
+      </button>
+
+    </div>
+  </section>
 
 </main>
 
@@ -310,23 +350,49 @@
   <button id="lightbox-close"><i class="fas fa-times"></i></button>
 </div>
 
-<!-- WA MODAL -->
-<div class="modal fade" id="waModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content modal-content-custom">
-      <div class="modal-header modal-header-custom">
-        <h5 class="modal-title modal-label">SYSTEM MESSAGE</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body modal-body-custom">
-        <div class="animated-emoji">👋</div>
-        <h3 class="modal-heading color-blue" id="modal-title">Eits, Tunggu Dulu!</h3>
-        <div class="modal-info-box">
-          <p class="modal-text" id="modal-desc">Untuk menjaga kenyamanan dan privasi, mari berkenalan via <strong>Gmail</strong> terlebih dahulu.<br><br>Berikan <strong>Nama Lengkap</strong> &amp; <strong>Tujuan</strong> kamu. Jika sudah sesuai, kita bisa langsung ngobrol santai di WhatsApp! ✨</p>
+<!-- WA AI TRAP POPUP -->
+<div class="wa-trap-overlay" id="wa-trap-overlay">
+  <div class="wa-trap-modal" id="wa-trap-modal">
+
+    <div class="wa-trap-header">
+      <div class="wa-trap-header-left">
+        <div class="wa-ai-avatar">
+          <span class="wa-ai-star">&#10022;</span>
+          <span class="wa-ai-pulse"></span>
         </div>
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fatirahmad067@gmail.com&su=Halo%20Fathir!%20Mari%20Buat%20Janji&body=Halo%20Fathir,%0A%0APerkenalkan,%0ANama%20Lengkap%20:%20%0ATujuan%20:%20%0A%0ATerima%20kasih!" target="_blank" rel="noopener noreferrer" class="contact-btn contact-btn-email modal-cta-btn"><i class="fas fa-paper-plane"></i> Lanjut ke Gmail</a>
+        <div>
+          <div class="wa-ai-name">AI Asisten Fathir</div>
+          <div class="wa-ai-status"><span class="wa-ai-online"></span> Online</div>
+        </div>
+      </div>
+      <button class="wa-trap-close" id="wa-trap-close"><i class="fas fa-times"></i></button>
+    </div>
+
+    <div class="wa-trap-body">
+      <div class="wa-bubble-wrap" id="wa-bubble-main" style="display:none">
+        <div class="wa-ai-avatar-sm">&#10022;</div>
+        <div class="wa-bubble" id="wa-bubble-text"></div>
+      </div>
+      <div class="wa-bubble-wrap" id="wa-typing-wrap">
+        <div class="wa-ai-avatar-sm">&#10022;</div>
+        <div class="wa-bubble wa-bubble-typing"><span></span><span></span><span></span></div>
       </div>
     </div>
+
+    <div class="wa-trap-actions" id="wa-trap-actions" style="display:none">
+      <p class="wa-trap-cta-label" id="wa-trap-cta-label">Pilih cara untuk berkenalan dulu:</p>
+      <div class="wa-trap-btns">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fatirahmad067@gmail.com&su=Halo%20Fathir!%20Perkenalan%20Diri&body=Halo%20Fathir,%0A%0APerkenalkan,%0ANama%20Lengkap%20:%20%0ATujuan%20:%20%0A%0ATerima%20kasih!" target="_blank" rel="noopener noreferrer" class="wa-trap-btn wa-trap-btn-email" id="wa-btn-email">
+          <i class="fas fa-paper-plane"></i>
+          <span><strong id="wa-btn-email-label">Via Gmail</strong><small id="wa-btn-email-sub">fatirahmad067@gmail.com</small></span>
+        </a>
+        <a href="https://instagram.com/eskopss" target="_blank" rel="noopener noreferrer" class="wa-trap-btn wa-trap-btn-ig" id="wa-btn-ig">
+          <i class="fab fa-instagram"></i>
+          <span><strong id="wa-btn-ig-label">Via Instagram</strong><small>@eskopss</small></span>
+        </a>
+      </div>
+    </div>
+
   </div>
 </div>
 
