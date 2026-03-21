@@ -32,7 +32,7 @@ Jawab ramah, singkat (max 3 kalimat).`;
   ];
 
   const body = JSON.stringify({
-    model: 'claude-haiku-4-5-20251001',
+    model: 'claude-3-haiku-20240307',
     max_tokens: 300,
     system: SYSTEM_PROMPT,
     messages
